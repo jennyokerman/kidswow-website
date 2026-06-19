@@ -39,17 +39,19 @@ export function Programs() {
       <Container>
         <SectionHeading title="Programs" align="center" />
 
-        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] sm:gap-8">
+        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {PROGRAMS.map((program) => (
             <article
               key={program.href}
               className="flex min-w-0 flex-col rounded-3xl bg-cream p-6 ring-1 ring-sage/20 md:p-7"
             >
-              <ProgramCardImage
-                src={program.image}
-                alt={program.imageAlt}
-                placeholderLabel={program.imageLabel}
-              />
+              <div className="mx-auto w-full max-w-[12rem] lg:max-w-none">
+                <ProgramCardImage
+                  src={program.image}
+                  alt={program.imageAlt}
+                  placeholderLabel={program.imageLabel}
+                />
+              </div>
               <h3 className="mt-6 font-display text-xl font-bold text-navy md:text-2xl">
                 {program.title}
               </h3>

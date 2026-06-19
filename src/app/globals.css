@@ -5,6 +5,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Matches comfortable reading at ~80% browser zoom; scales all rem-based type & spacing. */
+    font-size: 80%;
   }
 
   body {

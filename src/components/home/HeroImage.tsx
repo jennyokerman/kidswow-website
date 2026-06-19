@@ -9,7 +9,7 @@ const WIDTH = 560;
 const HEIGHT = 420; // 4:3
 
 const wrapperClass =
-  "inline-block w-full max-w-[min(92vw,300px)] sm:max-w-[340px] md:max-w-[400px] lg:max-w-[460px] xl:max-w-[520px]";
+  "block w-full max-w-[min(92vw,22rem)] sm:max-w-[26rem] md:max-w-none";
 
 export function HeroImage() {
   const [usePlaceholder, setUsePlaceholder] = useState(false);
@@ -31,7 +31,7 @@ export function HeroImage() {
         height={HEIGHT}
         unoptimized
         className="h-auto w-full rounded-2xl object-cover ring-1 ring-navy/10"
-        sizes="(max-width: 640px) 300px, (max-width: 1024px) 400px, 520px"
+        sizes="(max-width: 768px) 416px, 50vw"
         onError={() => setUsePlaceholder(true)}
       />
     </div>

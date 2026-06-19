@@ -1,76 +1,62 @@
 import Link from "next/link";
-import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { NAV_LINKS, SITE } from "@/lib/site";
 
 const linkClass =
-  "text-xs leading-snug text-cream/85 transition-colors hover:text-amber sm:text-sm sm:leading-normal";
+  "text-sm leading-snug text-cream/75 transition-colors hover:text-amber";
 
-function FooterLinks({
-  title,
-  links,
-}: {
-  title: string;
-  links: readonly { label: string; href: string }[];
-}) {
-  return (
-    <div className="min-w-0">
-      <p className="mb-3 border-b border-white/15 pb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-cream/55">
-        {title}
-      </p>
-      <ul className="space-y-2.5">
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link href={link.href} className={linkClass}>
-              {link.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+const FOOTER_SECTIONS = [
+  { title: "Programs", links: NAV_LINKS.programs },
+  { title: "About", links: NAV_LINKS.about },
+  { title: "Resources", links: NAV_LINKS.resources },
+] as const;
 
 export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-navy text-cream">
-      <Container className="py-12 md:py-16">
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
-          {/* Brand & CTA */}
-          <div className="max-w-lg shrink-0">
+      <Container className="py-6 md:py-7">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
+          <div className="max-w-xs shrink-0 lg:max-w-sm">
             <Link
               href="/"
-              className="inline-block font-display text-2xl font-semibold text-cream hover:text-cream/90"
+              className="font-display text-lg font-semibold text-cream transition-colors hover:text-cream/90"
             >
               {SITE.name}
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-cream/80">
+            <p className="mt-1.5 text-sm leading-snug text-cream/70">
               {SITE.mission}
             </p>
-            <p className="mt-5 text-sm leading-relaxed text-cream/65">
-              We partner with Kansas City area schools, homeschool programs, and
-              churches. We&apos;d love to hear from you.
-            </p>
-            <div className="mt-6">
-              <ButtonLink href="/contact" size="nav">
-                Contact
-              </ButtonLink>
-            </div>
+            <Link
+              href="/contact"
+              className="mt-3 inline-block text-sm font-medium leading-snug text-cream/90 transition-colors hover:text-amber"
+            >
+              Contact us
+            </Link>
           </div>
 
-          {/* Navigation — three columns, even on small screens */}
           <nav
-            className="grid w-full grid-cols-3 gap-4 sm:gap-8 lg:max-w-xl lg:flex-1 lg:gap-10 xl:max-w-2xl xl:gap-12"
+            className="grid grid-cols-3 gap-x-4 gap-y-4 sm:gap-x-8 lg:gap-x-10"
             aria-label="Footer navigation"
           >
-            <FooterLinks title="Programs" links={NAV_LINKS.programs} />
-            <FooterLinks title="About" links={NAV_LINKS.about} />
-            <FooterLinks title="Resources" links={NAV_LINKS.resources} />
+            {FOOTER_SECTIONS.map(({ title, links }) => (
+              <div key={title}>
+                <p className="mb-1.5 text-sm font-medium text-cream">{title}</p>
+                <ul className="space-y-1">
+                  {links.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className={linkClass}>
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </nav>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-8 md:mt-14">
-          <p className="text-center text-xs leading-relaxed text-cream/50">
+        <div className="mt-5 border-t border-white/10 pt-4">
+          <p className="text-xs leading-snug text-cream/50">
             &copy; {new Date().getFullYear()} {SITE.name}. Founded by{" "}
             {SITE.founder}.
           </p>
