@@ -27,15 +27,10 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mx-auto mt-12 max-w-2xl text-center md:mt-14">
-          <h2 className="font-display text-2xl font-semibold text-navy md:text-3xl">
-            Bring KidsWow to Your Community
-          </h2>
-          <div className="mt-6 flex justify-center md:mt-8">
-            <ButtonLink href="/contact" size="lg">
-              Contact Us
-            </ButtonLink>
-          </div>
+        <div className="mx-auto mt-12 flex justify-center md:mt-14">
+          <ButtonLink href="/contact" size="lg">
+            Bring KidsWow to You!
+          </ButtonLink>
         </div>
       </Container>
     </section>

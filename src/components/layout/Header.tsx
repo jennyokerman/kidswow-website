@@ -35,56 +35,62 @@ function Chevron({ open }: { open: boolean }) {
 function NavDropdown({
   label,
   items,
-  open,
-  onToggle,
-  onClose,
 }: {
   label: string;
   items: readonly { label: string; href: string }[];
-  open: boolean;
-  onToggle: () => void;
-  onClose: () => void;
 }) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="relative">
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          setOpen(false);
+        }
+      }}
+    >
       <button
         type="button"
         className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-cream/90 transition-colors hover:bg-white/10 hover:text-cream"
         aria-expanded={open}
-        onClick={onToggle}
+        aria-haspopup="true"
       >
         {label}
         <Chevron open={open} />
       </button>
-      {open && (
-        <div className="absolute left-0 top-full z-50 mt-1 min-w-[220px] rounded-2xl bg-white py-2 shadow-lg ring-1 ring-navy/10">
+
+      <div
+        className={`absolute left-0 top-full z-50 pt-1 transition-all duration-150 ${
+          open
+            ? "visible translate-y-0 opacity-100"
+            : "invisible -translate-y-1 opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="min-w-[220px] rounded-2xl bg-white py-2 shadow-lg ring-1 ring-navy/10">
           {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className="block px-4 py-2.5 text-sm text-charcoal transition-colors hover:bg-cream hover:text-navy"
-              onClick={onClose}
             >
               {item.label}
             </Link>
           ))}
         </div>
-      )}
+      </div>
     </div>
   );
 }
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<DropdownKey | null>(null);
 
   const closeAll = () => {
-    setOpenDropdown(null);
     setMobileOpen(false);
-  };
-
-  const toggleDropdown = (key: DropdownKey) => {
-    setOpenDropdown((prev) => (prev === key ? null : key));
   };
 
   return (
@@ -111,14 +117,7 @@ export function Header() {
           </Link>
 
           {DROPDOWNS.map(({ key, label }) => (
-            <NavDropdown
-              key={key}
-              label={label}
-              items={NAV_LINKS[key]}
-              open={openDropdown === key}
-              onToggle={() => toggleDropdown(key)}
-              onClose={() => setOpenDropdown(null)}
-            />
+            <NavDropdown key={key} label={label} items={NAV_LINKS[key]} />
           ))}
 
           <ButtonLink href="/contact" size="nav">
