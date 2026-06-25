@@ -8,8 +8,7 @@ import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 const WIDTH = 560;
 const HEIGHT = 420; // 4:3
 
-const wrapperClass =
-  "block w-full max-w-[min(92vw,22rem)] sm:max-w-[26rem] md:max-w-none";
+const wrapperClass = "block w-full";
 
 export function HeroImage() {
   const [usePlaceholder, setUsePlaceholder] = useState(false);

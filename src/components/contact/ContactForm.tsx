@@ -1,9 +1,12 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { ContactConfirmation } from "@/components/contact/ContactConfirmation";
 import { ContactProgressBar } from "@/components/contact/ContactProgressBar";
+import {
+  ContactTurnstile,
+} from "@/components/contact/ContactTurnstile";
 import {
   FieldGroup,
   RadioGroup,
@@ -14,6 +17,8 @@ import {
 import {
   AGE_GROUP_OPTIONS,
   BUDGET_OPTIONS,
+  clampContactField,
+  CONTACT_FIELD_LIMITS,
   DECISION_MAKER_OPTIONS,
   GROUP_TYPE_OPTIONS,
   INITIAL_CONTACT_FORM,
@@ -23,6 +28,7 @@ import {
   type ContactFormErrors,
   validateContactForm,
 } from "@/lib/contact-form";
+import { CONTACT_TIMING } from "@/lib/contact-security";
 
 const STEP_INTROS = [
   {
@@ -42,15 +48,31 @@ const STEP_INTROS = [
   },
 ] as const;
 
-export function ContactForm() {
+export function ContactForm({
+  turnstileSiteKey,
+}: {
+  turnstileSiteKey?: string;
+}) {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<ContactFormData>(INITIAL_CONTACT_FORM);
   const [errors, setErrors] = useState<ContactFormErrors>({});
-  const [honeypot, setHoneypot] = useState("");
+  const [hpWebsite, setHpWebsite] = useState("");
+  const [hpSubject, setHpSubject] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const formStartedAt = useRef(Date.now());
+  const formReadyAt = useRef<number | null>(null);
+  const turnstileEnabled = Boolean(turnstileSiteKey);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      formReadyAt.current = Date.now();
+    }, CONTACT_TIMING.honeypotReadyDelayMs);
+
+    return () => window.clearTimeout(timer);
+  }, []);
 
   const intro = STEP_INTROS[step - 1];
 
@@ -58,7 +80,15 @@ export function ContactForm() {
     key: K,
     value: ContactFormData[K],
   ) => {
-    setForm((current) => ({ ...current, [key]: value }));
+    const nextValue =
+      typeof value === "string" && key in CONTACT_FIELD_LIMITS
+        ? (clampContactField(
+            key as keyof typeof CONTACT_FIELD_LIMITS,
+            value,
+          ) as ContactFormData[K])
+        : value;
+
+    setForm((current) => ({ ...current, [key]: nextValue }));
     if (errors[key]) {
       setErrors((current) => {
         const next = { ...current };
@@ -129,14 +159,23 @@ export function ContactForm() {
     setIsSubmitting(true);
     setSubmitError("");
 
+    if (turnstileEnabled && !turnstileToken) {
+      setSubmitError("Please complete the verification check before submitting.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
-          website: honeypot,
+          _hpWebsite: hpWebsite,
+          _hpSubject: hpSubject,
           formStartedAt: formStartedAt.current,
+          formReadyAt: formReadyAt.current ?? undefined,
+          turnstileToken,
         }),
       });
 
@@ -151,7 +190,9 @@ export function ContactForm() {
       setForm(INITIAL_CONTACT_FORM);
       setStep(1);
       setErrors({});
+      setTurnstileToken("");
       formStartedAt.current = Date.now();
+      formReadyAt.current = Date.now();
     } catch (error) {
       setSubmitError(
         error instanceof Error
@@ -196,6 +237,7 @@ export function ContactForm() {
         </div>
 
         <form
+          className="relative"
           onSubmit={(event) => {
             event.preventDefault();
             if (step < 3) {
@@ -206,17 +248,30 @@ export function ContactForm() {
           }}
           noValidate
         >
-          {/* Honeypot — hidden from real users */}
-          <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden>
-            <label htmlFor="website">Website</label>
+          {/* Honeypot fields — hidden from real users, ignored by autofill */}
+          <div
+            className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
+            aria-hidden
+          >
+            <label htmlFor="_hpWebsite">Company website</label>
             <input
-              id="website"
-              name="website"
+              id="_hpWebsite"
+              name="_hpWebsite"
               type="text"
               tabIndex={-1}
               autoComplete="off"
-              value={honeypot}
-              onChange={(event) => setHoneypot(event.target.value)}
+              value={hpWebsite}
+              onChange={(event) => setHpWebsite(event.target.value)}
+            />
+            <label htmlFor="_hpSubject">Email subject</label>
+            <input
+              id="_hpSubject"
+              name="_hpSubject"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={hpSubject}
+              onChange={(event) => setHpSubject(event.target.value)}
             />
           </div>
 
@@ -228,6 +283,7 @@ export function ContactForm() {
                   onChange={(value) => updateField("fullName", value)}
                   placeholder="Your Name"
                   autoComplete="name"
+                  maxLength={CONTACT_FIELD_LIMITS.fullName}
                 />
               </FieldGroup>
 
@@ -238,6 +294,7 @@ export function ContactForm() {
                   onChange={(value) => updateField("email", value)}
                   placeholder="yourname@email.com"
                   autoComplete="email"
+                  maxLength={CONTACT_FIELD_LIMITS.email}
                 />
               </FieldGroup>
 
@@ -248,6 +305,7 @@ export function ContactForm() {
                   onChange={(value) => updateField("phone", value)}
                   placeholder="(555) 000-0000"
                   autoComplete="tel"
+                  maxLength={CONTACT_FIELD_LIMITS.phone}
                 />
               </FieldGroup>
 
@@ -257,6 +315,7 @@ export function ContactForm() {
                   onChange={(value) => updateField("cityState", value)}
                   placeholder="e.g. Kansas City, MO"
                   autoComplete="address-level2"
+                  maxLength={CONTACT_FIELD_LIMITS.cityState}
                 />
               </FieldGroup>
 
@@ -298,6 +357,7 @@ export function ContactForm() {
                       value={form.groupTypeOther}
                       onChange={(value) => updateField("groupTypeOther", value)}
                       placeholder="Tell us about your group"
+                      maxLength={CONTACT_FIELD_LIMITS.groupTypeOther}
                     />
                   </div>
                 )}
@@ -312,6 +372,7 @@ export function ContactForm() {
                   value={form.numKids}
                   onChange={(value) => updateField("numKids", value)}
                   placeholder="e.g. 8"
+                  maxLength={CONTACT_FIELD_LIMITS.numKids}
                 />
               </FieldGroup>
 
@@ -320,6 +381,7 @@ export function ContactForm() {
                   value={form.organizationName}
                   onChange={(value) => updateField("organizationName", value)}
                   placeholder="e.g. Lenexa Homeschool Co-op"
+                  maxLength={CONTACT_FIELD_LIMITS.organizationName}
                 />
               </FieldGroup>
 
@@ -340,6 +402,7 @@ export function ContactForm() {
                       value={form.ageGroupOther}
                       onChange={(value) => updateField("ageGroupOther", value)}
                       placeholder="Tell us the ages in your group"
+                      maxLength={CONTACT_FIELD_LIMITS.ageGroupOther}
                     />
                   </div>
                 )}
@@ -354,6 +417,7 @@ export function ContactForm() {
                   value={form.winForKids}
                   onChange={(value) => updateField("winForKids", value)}
                   placeholder="e.g. We would love for them to walk away excited about science and feeling more confident to try new things…"
+                  maxLength={CONTACT_FIELD_LIMITS.winForKids}
                 />
               </FieldGroup>
             </div>
@@ -385,6 +449,7 @@ export function ContactForm() {
                   onChange={(value) => updateField("timingPreferences", value)}
                   placeholder="Share your preferred dates, days, times, or leave open for our recommendation"
                   rows={3}
+                  maxLength={CONTACT_FIELD_LIMITS.timingPreferences}
                 />
               </FieldGroup>
 
@@ -424,6 +489,7 @@ export function ContactForm() {
                   onChange={(value) => updateField("readyForDeposit", value)}
                   placeholder="Yes we can't wait to work with you!"
                   rows={2}
+                  maxLength={CONTACT_FIELD_LIMITS.readyForDeposit}
                 />
               </FieldGroup>
 
@@ -436,8 +502,17 @@ export function ContactForm() {
                   value={form.howDidYouHear}
                   onChange={(value) => updateField("howDidYouHear", value)}
                   placeholder="We'd love to hear the story – what sparked your interest in this program?"
+                  maxLength={CONTACT_FIELD_LIMITS.howDidYouHear}
                 />
               </FieldGroup>
+
+              {turnstileSiteKey && (
+                <ContactTurnstile
+                  siteKey={turnstileSiteKey}
+                  onToken={setTurnstileToken}
+                  onExpire={() => setTurnstileToken("")}
+                />
+              )}
             </div>
           )}
 
@@ -474,7 +549,7 @@ export function ContactForm() {
               <Button
                 type="submit"
                 className="sm:ml-auto"
-                disabled={isSubmitting}
+                disabled={isSubmitting || (turnstileEnabled && !turnstileToken)}
               >
                 {isSubmitting ? "Sending…" : "Submit"}
               </Button>

@@ -1,17 +1,19 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { checkContactRateLimits } from "@/lib/contact-rate-limit";
 import {
   buildContactEmailHtml,
+  clampContactForm,
   formatContactSubmission,
   validateContactForm,
   type ContactFormData,
 } from "@/lib/contact-form";
-
-const MIN_FORM_SECONDS = 4;
-const RATE_LIMIT_WINDOW_MS = 60_000;
-const RATE_LIMIT_MAX = 5;
-
-const rateLimit = new Map<string, { count: number; resetAt: number }>();
+import {
+  detectContactSpam,
+  isHoneypotTriggered,
+  verifyTurnstileToken,
+  type HoneypotPayload,
+} from "@/lib/contact-security";
 
 function getClientIp(request: Request) {
   const forwarded = request.headers.get("x-forwarded-for");
@@ -19,50 +21,47 @@ function getClientIp(request: Request) {
   return request.headers.get("x-real-ip") ?? "unknown";
 }
 
-function isRateLimited(ip: string) {
-  const now = Date.now();
-  const entry = rateLimit.get(ip);
+type ContactPayload = ContactFormData &
+  HoneypotPayload & {
+    turnstileToken?: string;
+  };
 
-  if (!entry || now > entry.resetAt) {
-    rateLimit.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return false;
-  }
-
-  entry.count += 1;
-  return entry.count > RATE_LIMIT_MAX;
-}
-
-type ContactPayload = ContactFormData & {
-  website?: string;
-  formStartedAt?: number;
-};
+const GENERIC_SPAM_MESSAGE =
+  "We could not send your message. Please review your answers and try again.";
 
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as ContactPayload;
     const ip = getClientIp(request);
 
-    if (isRateLimited(ip)) {
-      return NextResponse.json(
-        { error: "Too many submissions. Please try again in a minute." },
-        { status: 429 },
-      );
-    }
-
-    // Honeypot — bots often fill hidden fields
-    if (body.website?.trim()) {
+    if (isHoneypotTriggered(body)) {
       return NextResponse.json({ ok: true });
     }
 
-    // Too-fast submission suggests automation
-    if (
-      typeof body.formStartedAt === "number" &&
-      Date.now() - body.formStartedAt < MIN_FORM_SECONDS * 1000
-    ) {
-      return NextResponse.json({ ok: true });
+    const turnstileRequired = Boolean(
+      process.env.TURNSTILE_SECRET_KEY && process.env.TURNSTILE_SITE_KEY,
+    );
+
+    if (turnstileRequired) {
+      const valid = await verifyTurnstileToken(body.turnstileToken ?? "", ip);
+      if (!valid) {
+        return NextResponse.json(
+          { error: "Please complete the verification check and try again." },
+          { status: 403 },
+        );
+      }
     }
 
-    const { website: _website, formStartedAt: _started, ...formData } = body;
+    const {
+      _hpWebsite: _w,
+      _hpSubject: _s,
+      formStartedAt: _fs,
+      formReadyAt: _fr,
+      turnstileToken: _tt,
+      ...rawFormData
+    } = body;
+
+    const formData = clampContactForm(rawFormData);
     const errors = validateContactForm(formData);
 
     if (Object.keys(errors).length > 0) {
@@ -70,6 +69,17 @@ export async function POST(request: Request) {
         { error: "Please complete all required fields." },
         { status: 400 },
       );
+    }
+
+    const spam = detectContactSpam(formData);
+    if (spam.blocked) {
+      console.warn("Contact form spam blocked:", spam.reason);
+      return NextResponse.json({ error: GENERIC_SPAM_MESSAGE }, { status: 400 });
+    }
+
+    const rateLimit = await checkContactRateLimits(ip, formData.email);
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ error: rateLimit.message }, { status: 429 });
     }
 
     const resendApiKey = process.env.RESEND_API_KEY;

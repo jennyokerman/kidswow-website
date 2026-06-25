@@ -40,6 +40,7 @@ export function TextInput({
   id,
   name,
   autoComplete,
+  maxLength,
 }: {
   value: string;
   onChange: (value: string) => void;
@@ -48,6 +49,7 @@ export function TextInput({
   id?: string;
   name?: string;
   autoComplete?: string;
+  maxLength?: number;
 }) {
   return (
     <input
@@ -58,6 +60,7 @@ export function TextInput({
       onChange={(event) => onChange(event.target.value)}
       placeholder={placeholder}
       autoComplete={autoComplete}
+      maxLength={maxLength}
       className={fieldClass}
     />
   );
@@ -70,6 +73,7 @@ export function TextArea({
   rows = 4,
   id,
   name,
+  maxLength,
 }: {
   value: string;
   onChange: (value: string) => void;
@@ -77,6 +81,7 @@ export function TextArea({
   rows?: number;
   id?: string;
   name?: string;
+  maxLength?: number;
 }) {
   return (
     <textarea
@@ -86,6 +91,7 @@ export function TextArea({
       onChange={(event) => onChange(event.target.value)}
       placeholder={placeholder}
       rows={rows}
+      maxLength={maxLength}
       className={`${fieldClass} resize-y min-h-[6rem]`}
     />
   );

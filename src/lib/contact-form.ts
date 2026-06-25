@@ -103,6 +103,54 @@ export const INITIAL_CONTACT_FORM: ContactFormData = {
 
 export type ContactFormErrors = Partial<Record<keyof ContactFormData, string>>;
 
+/** Max character counts — enforced on client inputs and server validation. */
+export const CONTACT_FIELD_LIMITS = {
+  fullName: 100,
+  email: 254,
+  phone: 30,
+  cityState: 100,
+  groupTypeOther: 150,
+  numKids: 10,
+  organizationName: 150,
+  ageGroupOther: 100,
+  winForKids: 2000,
+  timingPreferences: 2000,
+  readyForDeposit: 500,
+  howDidYouHear: 2000,
+} as const;
+
+/** Minimum length for free-text answers (anti-spam). */
+export const CONTACT_FIELD_MIN_LENGTHS = {
+  winForKids: 15,
+  howDidYouHear: 10,
+  readyForDeposit: 2,
+} as const;
+
+export function clampContactField<K extends keyof typeof CONTACT_FIELD_LIMITS>(
+  key: K,
+  value: string,
+): string {
+  return value.slice(0, CONTACT_FIELD_LIMITS[key]);
+}
+
+export function clampContactForm(data: ContactFormData): ContactFormData {
+  return {
+    ...data,
+    fullName: clampContactField("fullName", data.fullName),
+    email: clampContactField("email", data.email),
+    phone: clampContactField("phone", data.phone),
+    cityState: clampContactField("cityState", data.cityState),
+    groupTypeOther: clampContactField("groupTypeOther", data.groupTypeOther),
+    numKids: clampContactField("numKids", data.numKids),
+    organizationName: clampContactField("organizationName", data.organizationName),
+    ageGroupOther: clampContactField("ageGroupOther", data.ageGroupOther),
+    winForKids: clampContactField("winForKids", data.winForKids),
+    timingPreferences: clampContactField("timingPreferences", data.timingPreferences),
+    readyForDeposit: clampContactField("readyForDeposit", data.readyForDeposit),
+    howDidYouHear: clampContactField("howDidYouHear", data.howDidYouHear),
+  };
+}
+
 function labelFor(
   options: readonly { value: string; label: string; hint?: string }[],
   value: string,
@@ -145,6 +193,10 @@ export function validateContactForm(data: ContactFormData): ContactFormErrors {
   }
   if (!data.winForKids.trim()) {
     errors.winForKids = "Please share what would make this a win for your kids.";
+  } else if (
+    data.winForKids.trim().length < CONTACT_FIELD_MIN_LENGTHS.winForKids
+  ) {
+    errors.winForKids = "Please share a bit more detail (at least a sentence or two).";
   }
 
   if (!data.programLength) {
@@ -156,9 +208,17 @@ export function validateContactForm(data: ContactFormData): ContactFormErrors {
   }
   if (!data.readyForDeposit.trim()) {
     errors.readyForDeposit = "Please let us know if you are ready for a deposit.";
+  } else if (
+    data.readyForDeposit.trim().length < CONTACT_FIELD_MIN_LENGTHS.readyForDeposit
+  ) {
+    errors.readyForDeposit = "Please enter a short answer.";
   }
   if (!data.howDidYouHear.trim()) {
     errors.howDidYouHear = "Please tell us how you heard about us.";
+  } else if (
+    data.howDidYouHear.trim().length < CONTACT_FIELD_MIN_LENGTHS.howDidYouHear
+  ) {
+    errors.howDidYouHear = "Please share a bit more detail.";
   }
 
   return errors;

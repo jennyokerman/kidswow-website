@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const turnstileSiteKey = process.env.TURNSTILE_SITE_KEY;
+
   return (
     <div className="bg-gradient-to-b from-cream via-white/40 to-cream">
       <section className="py-14 md:py-20">
@@ -31,7 +33,7 @@ export default function ContactPage() {
       <section className="pb-16 md:pb-24">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <ContactForm />
+            <ContactForm turnstileSiteKey={turnstileSiteKey} />
           </div>
         </Container>
       </section>
