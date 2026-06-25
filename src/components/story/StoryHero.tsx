@@ -4,7 +4,7 @@ export function StoryHero() {
   return (
     <section className="py-14 md:py-20 lg:py-24">
       <Container>
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-widest text-sky">
             About
           </p>
