@@ -2,8 +2,6 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SITE } from "@/lib/site";
 
-const FOUNDER_IMAGE = "/story/founder.jpg";
-
 export function StoryFounder() {
   return (
     <section className="py-14 md:py-20 lg:py-24">
@@ -13,8 +11,8 @@ export function StoryFounder() {
         </h2>
 
         <div className="mx-auto mt-10 max-w-5xl lg:mt-12">
-          <div className="flex items-start gap-5 max-[480px]:flex-col max-[480px]:gap-6 sm:gap-6 md:gap-8">
-            <p className="min-w-0 flex-1 text-base leading-relaxed text-charcoal/85 md:text-lg">
+          <div className="grid grid-cols-[minmax(0,0.58fr)_minmax(0,0.42fr)] items-center gap-6 max-[480px]:grid-cols-1 max-[480px]:gap-8 lg:gap-10">
+            <p className="min-w-0 text-base leading-relaxed text-charcoal/85 md:text-lg">
               {SITE.founder} has loved learning since he was a kid. His mom would
               bring small machines home from work, and he became fascinated with
               taking them apart, discovering how they worked from the inside, and
@@ -25,15 +23,17 @@ export function StoryFounder() {
               his family launched KidsWow.
             </p>
 
-            <div className="w-[9.5rem] shrink-0 max-[480px]:mx-auto sm:w-[10.5rem] md:w-[11.5rem] lg:w-[12.5rem]">
-              <Image
-                src={FOUNDER_IMAGE}
-                alt={`Photo of ${SITE.founder}, founder of KidsWow`}
-                width={500}
-                height={500}
-                unoptimized
-                className="aspect-square w-full rounded-3xl bg-sage/10 object-cover object-top ring-1 ring-sage/25"
-              />
+            <div className="min-w-0 max-[480px]:mx-auto max-[480px]:max-w-[19rem]">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-sage/10 ring-1 ring-sage/25">
+                <Image
+                  src="/story/founder.jpg"
+                  alt={`Photo of ${SITE.founder}, founder of KidsWow`}
+                  fill
+                  unoptimized
+                  className="object-cover object-top"
+                  sizes="(max-width: 480px) 304px, 42vw"
+                />
+              </div>
             </div>
           </div>
 

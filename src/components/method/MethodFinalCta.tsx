@@ -10,7 +10,7 @@ export function MethodFinalCta() {
         label: program.label,
       }))}
     >
-      <p>KidsWow STEM, physics, finance, language&hellip;</p>
+      <p>KidsWow STEM, physics, finance&hellip; you name it!</p>
     </AboutPageCta>
   );
 }

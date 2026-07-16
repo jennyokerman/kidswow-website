@@ -4,7 +4,7 @@ const STEPS = [
   {
     title: "Connect with us",
     description:
-      "Tell us about your group, student ages, and whether you're interested in a semester program or a 2–3 day STEM camp.",
+      "Tell us about your group, student ages, and whether you're interested in a weekly program or a 2–3 day STEM camp.",
   },
   {
     title: "Learn by doing",
@@ -19,7 +19,7 @@ const STEPS = [
 
 export function StemProgramHowItWorks() {
   return (
-    <ol className="mx-auto mt-8 max-w-3xl space-y-6">
+    <ol className="space-y-6">
       {STEPS.map((step, index) => (
         <li key={step.title} className="flex gap-4 md:gap-5">
           <span

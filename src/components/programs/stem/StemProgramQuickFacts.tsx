@@ -109,7 +109,7 @@ const FACTS = [
     ),
     body: (
       <p className={`${bodyClass} xl:text-center`}>
-        <span className="block font-semibold text-navy sm:inline">Semester</span>
+        <span className="block font-semibold text-navy sm:inline">Weekly</span>
         <span className="block text-charcoal/80 sm:mx-1 sm:inline">or</span>
         <span className="block font-semibold text-navy sm:inline">
           2–3 Day STEM Camp

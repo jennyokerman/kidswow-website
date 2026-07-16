@@ -4,8 +4,8 @@ export function StoryWhyItMatters() {
   return (
     <section className="bg-sage/10 py-14 md:py-20">
       <Container>
-        <div className="max-w-3xl">
-          <h2 className="font-display text-3xl font-semibold text-navy md:text-4xl">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl">
             Why This Matters
           </h2>
           <p className="mt-6 text-base leading-relaxed text-charcoal/85 md:text-lg">

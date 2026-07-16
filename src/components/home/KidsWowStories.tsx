@@ -10,8 +10,9 @@ export function KidsWowStories() {
     <section id="kidswow-stories" className="py-20 md:py-28">
       <Container>
         <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl lg:text-5xl">
-          KidsWow Stories
+          KidsWow Inspiration
         </h2>
+
         <figure className="mx-auto mt-10 max-w-3xl text-center md:mt-12">
           <blockquote className="font-display text-xl italic leading-relaxed text-navy md:text-2xl md:leading-relaxed">
             &ldquo;{KIDSWOW_STORIES_INTRO.quote}&rdquo;

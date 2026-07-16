@@ -4,8 +4,8 @@ export function MethodHero() {
   return (
     <section className="py-14 md:py-20 lg:py-24">
       <Container>
-        <div className="max-w-4xl">
-          <h1 className="font-display text-4xl font-semibold text-navy md:text-5xl">
+        <div className="mx-auto max-w-4xl">
+          <h1 className="text-center font-display text-4xl font-semibold text-navy md:text-5xl">
             The KidsWow Method
           </h1>
 
@@ -14,14 +14,14 @@ export function MethodHero() {
             role="region"
             aria-label="KidsWow Method video"
           >
-            <div className="flex h-full flex-col items-center justify-center gap-3 px-6 text-center">
-              <span className="rounded-full bg-sky/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-sky">
-                Video coming soon
-              </span>
-              <p className="max-w-md text-sm leading-relaxed text-charcoal/60">
-                A YouTube embed will go here once the link is ready.
-              </p>
-            </div>
+            <iframe
+              className="h-full w-full"
+              src="https://www.youtube-nocookie.com/embed/w3d590Nde9o"
+              title="The KidsWow Method"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
           </div>
         </div>
       </Container>

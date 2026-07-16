@@ -1,10 +1,35 @@
 "use client";
 
+import Image, { type StaticImageData } from "next/image";
 import { useCallback, useRef, useState } from "react";
 import {
   KIDSWOW_STORIES_INTRO,
   type KidsWowStory,
 } from "@/content/kidswow-stories";
+import inspirationOne from "../../../Kidswowpics1/KidsWow Home/kidswowinspiration1.png";
+import inspirationTwo from "../../../Kidswowpics1/KidsWow Home/kidswowinspiration2.png";
+import inspirationThree from "../../../Kidswowpics1/KidsWow Home/kidswowinspiration3.png";
+
+const STORY_MEDIA: Record<
+  string,
+  { src: StaticImageData; alt: string; side: "left" | "right" }
+> = {
+  "engineering-path": {
+    src: inspirationOne,
+    alt: "Students working together on a robotics project",
+    side: "left",
+  },
+  "graphic-design-anime": {
+    src: inspirationTwo,
+    alt: "A computer screen showing an anime character drawn with code",
+    side: "right",
+  },
+  "guitar-composer": {
+    src: inspirationThree,
+    alt: "A musician playing an acoustic guitar",
+    side: "left",
+  },
+};
 
 export function StoriesCarousel({ stories }: { stories: KidsWowStory[] }) {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -37,28 +62,56 @@ export function StoriesCarousel({ stories }: { stories: KidsWowStory[] }) {
         onScroll={handleScroll}
         className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         aria-roledescription="carousel"
-        aria-label="KidsWow stories"
+        aria-label="KidsWow inspiration"
       >
-        {stories.map((story, index) => (
-          <article
-            key={story.id}
-            className="w-full shrink-0 snap-start snap-always px-1"
-            aria-roledescription="slide"
-            aria-label={`Story ${index + 1} of ${stories.length}`}
-          >
-            <blockquote className="mx-auto max-w-3xl rounded-3xl bg-white px-8 py-10 shadow-sm ring-1 ring-navy/5 md:px-12 md:py-12">
-              <p className="text-xs font-semibold uppercase tracking-wider text-sage">
-                {story.label}
-              </p>
-              <p className="mt-5 font-display text-lg leading-relaxed text-navy md:text-xl md:leading-relaxed">
-                &ldquo;{story.text}&rdquo;
-              </p>
-              <footer className="mt-8 text-sm font-medium text-sky">
-                {KIDSWOW_STORIES_INTRO.attribution}
-              </footer>
-            </blockquote>
-          </article>
-        ))}
+        {stories.map((story, index) => {
+          const media = STORY_MEDIA[story.id];
+
+          return (
+            <article
+              key={story.id}
+              className="w-full shrink-0 snap-start snap-always px-1"
+              aria-roledescription="slide"
+              aria-label={`Story ${index + 1} of ${stories.length}`}
+            >
+              <blockquote className="mx-auto max-w-5xl rounded-3xl bg-white p-4 shadow-sm ring-1 ring-navy/5 sm:p-6 md:p-8">
+                <div
+                  className={`grid items-center gap-4 sm:gap-6 md:gap-10 ${
+                    media.side === "left"
+                      ? "grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]"
+                      : "grid-cols-[minmax(0,0.58fr)_minmax(0,0.42fr)]"
+                  }`}
+                >
+                  <div
+                    className={`relative aspect-[4/3] min-w-0 overflow-hidden rounded-2xl bg-sage/10 ${
+                      media.side === "right" ? "order-2" : ""
+                    }`}
+                  >
+                    <Image
+                      src={media.src}
+                      alt={media.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 40vw, 400px"
+                    />
+                  </div>
+
+                  <div className="min-w-0 py-2 sm:py-4">
+                    <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-sage sm:text-xs">
+                      {story.label}
+                    </p>
+                    <p className="mt-3 font-display text-xs leading-relaxed text-navy sm:mt-5 sm:text-base md:text-lg md:leading-relaxed lg:text-xl">
+                      &ldquo;{story.text}&rdquo;
+                    </p>
+                    <footer className="mt-4 text-[0.65rem] font-medium text-sky sm:mt-6 sm:text-xs md:mt-8 md:text-sm">
+                      {KIDSWOW_STORIES_INTRO.attribution}
+                    </footer>
+                  </div>
+                </div>
+              </blockquote>
+            </article>
+          );
+        })}
       </div>
 
       <div className="mt-8 flex items-center justify-center gap-6">

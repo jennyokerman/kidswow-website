@@ -5,7 +5,7 @@ const base =
   "inline-flex items-center justify-center rounded-full font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky";
 
 const variants = {
-  primary: "bg-amber text-navy hover:bg-amber/90",
+  primary: "bg-amber text-white hover:bg-amber/90",
   secondary:
     "border-2 border-navy text-navy bg-transparent hover:bg-navy hover:text-cream",
   ghost: "text-sky hover:text-navy bg-transparent",

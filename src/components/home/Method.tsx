@@ -1,5 +1,8 @@
+import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import boredKid from "../../../Kidswowpics1/KidsWow Home/boredkid1.png";
+import kidsFreeRunning from "../../../Kidswowpics1/KidsWow Home/kidsfreerunning.png";
 
 export function Method() {
   return (
@@ -11,6 +14,15 @@ export function Method() {
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-6">
           <div className="rounded-3xl bg-white/80 p-8 ring-1 ring-navy/10">
+            <div className="relative mb-6 h-36 w-full overflow-hidden rounded-2xl bg-navy/5 sm:h-48 lg:h-52">
+              <Image
+                src={boredKid}
+                alt="A student feeling disengaged in a conventional classroom"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 45vw"
+              />
+            </div>
             <h3 className="font-display text-xl font-bold text-navy md:text-2xl">
               Conventional Classrooms
             </h3>
@@ -33,6 +45,15 @@ export function Method() {
             <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-sky px-4 py-1 text-xs font-bold uppercase tracking-wider text-white lg:hidden">
               vs
             </span>
+            <div className="relative mb-6 h-36 w-full overflow-hidden rounded-2xl bg-sage/10 sm:h-48 lg:h-52">
+              <Image
+                src={kidsFreeRunning}
+                alt="Students joyfully running together outside school"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 45vw"
+              />
+            </div>
             <h3 className="font-display text-xl font-bold text-navy md:text-2xl">
               KidsWow Learning
             </h3>

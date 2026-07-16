@@ -13,3 +13,10 @@
     @apply bg-cream text-charcoal antialiased;
   }
 }
+
+/* Orange primary buttons on navy backgrounds use white label text */
+@layer components {
+  .bg-navy :is(a, button)[class*="bg-amber"] {
+    @apply text-white;
+  }
+}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { type ReactNode } from "react";
 import { Container } from "@/components/ui/Container";
+import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { StemProgramHowItWorks } from "@/components/programs/stem/StemProgramHowItWorks";
 
 function FactIcon({ children }: { children: ReactNode }) {
@@ -104,7 +105,7 @@ const NEED_TO_KNOW = [
     ),
     body: (
       <p className="text-base leading-relaxed text-charcoal md:text-lg">
-        <span className="font-semibold text-navy">Semester</span> or{" "}
+        <span className="font-semibold text-navy">Weekly</span> or{" "}
         <span className="font-semibold text-navy">2–3 Day STEM Camp</span>
       </p>
     ),
@@ -176,7 +177,17 @@ export function StemProgramDetails() {
         <h3 className="mt-12 text-center font-display text-2xl font-semibold text-navy md:mt-14">
           How It Works
         </h3>
-        <StemProgramHowItWorks />
+        <div className="mt-8 grid grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] items-start gap-6 max-[520px]:grid-cols-1 max-[520px]:gap-8 lg:gap-10">
+          <div className="min-w-0 max-[520px]:mx-auto max-[520px]:max-w-sm">
+            <MediaPlaceholder
+              label="Excited kids — add photo to public/"
+              className="rounded-3xl"
+            />
+          </div>
+          <div className="min-w-0">
+            <StemProgramHowItWorks />
+          </div>
+        </div>
       </Container>
     </section>
   );

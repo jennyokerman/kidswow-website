@@ -1,4 +1,23 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import highSchoolStem from "../../../Kidswowpics1/KidsWow Home/highschoolstem.png";
+import kidsFriends from "../../../Kidswowpics1/KidsWow Home/kidsfriends.png";
+import kidsPlaying from "../../../Kidswowpics1/KidsWow Home/kidsplaying1.jpg";
+
+const BENEFIT_PHOTOS = [
+  {
+    src: kidsPlaying,
+    alt: "Children learning together through hands-on play",
+  },
+  {
+    src: kidsFriends,
+    alt: "Three young friends smiling together",
+  },
+  {
+    src: highSchoolStem,
+    alt: "High school students building an electronics project",
+  },
+] as const;
 
 export function Benefits() {
   return (
@@ -17,6 +36,23 @@ export function Benefits() {
           <p className="mt-12 font-display text-xl font-semibold text-navy md:text-2xl">
             Kids are the future. Don&apos;t leave them behind.
           </p>
+        </div>
+
+        <div className="mx-auto mt-12 grid w-full max-w-5xl grid-cols-3 gap-2 sm:gap-4 md:mt-16">
+          {BENEFIT_PHOTOS.map((photo) => (
+            <div
+              key={photo.alt}
+              className="relative aspect-[4/3] min-w-0 overflow-hidden rounded-xl bg-white/50 ring-1 ring-navy/10 sm:rounded-2xl"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 31vw, 320px"
+              />
+            </div>
+          ))}
         </div>
       </Container>
     </section>

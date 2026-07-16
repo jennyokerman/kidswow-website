@@ -1,5 +1,7 @@
 import { Container } from "@/components/ui/Container";
 
+const YOUTUBE_ID = "r7LsjMqr-S0";
+
 export function PhysicsCreationHero() {
   return (
     <section className="py-10 md:py-12 lg:py-14">
@@ -11,14 +13,14 @@ export function PhysicsCreationHero() {
           The &ldquo;Let There Be Light&rdquo; Experience
         </p>
 
-        <div
-          className="mx-auto mt-10 flex aspect-video max-w-4xl items-center justify-center rounded-2xl bg-sage/15 ring-1 ring-sage/25 md:mt-12"
-          role="img"
-          aria-label="Hero image or video coming soon"
-        >
-          <span className="px-6 text-center text-sm font-medium text-sage">
-            Hero image or video coming soon
-          </span>
+        <div className="mx-auto mt-10 aspect-video max-w-4xl overflow-hidden rounded-2xl bg-navy ring-1 ring-sage/25 md:mt-12">
+          <iframe
+            className="h-full w-full"
+            src={`https://www.youtube.com/embed/${YOUTUBE_ID}`}
+            title="Physics & Creation — Let There Be Light"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
         </div>
       </Container>
     </section>

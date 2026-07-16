@@ -45,7 +45,7 @@ export function MethodWhyWow() {
 
           <div className="mt-10 flex justify-center md:mt-12">
             <ButtonLink href="/#kidswow-stories" size="lg">
-              Check out KidsWow Stories
+              Check out KidsWow Inspiration
             </ButtonLink>
           </div>
         </div>
