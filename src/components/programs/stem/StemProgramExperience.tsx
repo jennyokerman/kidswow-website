@@ -1,20 +1,31 @@
+import Image, { type StaticImageData } from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import dadTeaching6 from "../../../../Kidswowpics1/STEMpage/dadteaching6.png";
+import kidsWithRobots from "../../../../Kidswowpics1/STEMpage/kidswithrobots.png";
+import kidsWowStory3 from "../../../../Kidswowpics1/STEMpage/kidswowstory3.jpg";
 
-const EXPERIENCE_CARDS = [
+const EXPERIENCE_CARDS: {
+  image: StaticImageData;
+  imageAlt: string;
+  text: string;
+}[] = [
   {
-    imageLabel: "Experience photo 1 coming soon",
+    image: dadTeaching6,
+    imageAlt: "KidsWow facilitator teaching a STEM concept",
     text: "The KidsWow facilitator demonstrates how a particular tool or machine works, shares a core concept, or connects ideas together.",
   },
   {
-    imageLabel: "Experience photo 2 coming soon",
+    image: kidsWowStory3,
+    imageAlt: "Students exploring with flexible, hands-on STEM time",
     text: "The participants are given structured but flexible time to gravitate toward their particular interest so they can learn for themselves.",
   },
   {
-    imageLabel: "Experience photo 3 coming soon",
+    image: kidsWithRobots,
+    imageAlt: "Students working deeply on robotics projects",
     text: "The KidsWow facilitator rotates through the room to ask and answer questions, notice what inspires each individual, and introduce new ideas for those ready to dive deeper.",
   },
-] as const;
+];
 
 export function StemProgramExperience() {
   return (
@@ -25,18 +36,19 @@ export function StemProgramExperience() {
           align="center"
         />
 
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3 lg:mt-14 lg:gap-10">
+        <div className="mt-12 grid grid-cols-3 gap-2 sm:gap-4 lg:mt-14 lg:gap-6">
           {EXPERIENCE_CARDS.map((card) => (
-            <article
-              key={card.imageLabel}
-              className="flex flex-col overflow-hidden rounded-3xl bg-sage/15 ring-1 ring-sage/30"
-            >
-              <div className="flex aspect-square w-full items-center justify-center bg-sage/15">
-                <span className="px-4 text-center text-sm font-medium text-sage">
-                  {card.imageLabel}
-                </span>
+            <article key={card.imageAlt} className="min-w-0">
+              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-sage/15 ring-1 ring-sage/30 sm:rounded-2xl">
+                <Image
+                  src={card.image}
+                  alt={card.imageAlt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 31vw, 320px"
+                />
               </div>
-              <p className="p-6 text-left text-base leading-relaxed text-charcoal/85 md:p-7 md:text-lg">
+              <p className="mt-3 text-left text-xs leading-relaxed text-charcoal/85 sm:mt-4 sm:text-sm md:text-base lg:text-lg">
                 {card.text}
               </p>
             </article>

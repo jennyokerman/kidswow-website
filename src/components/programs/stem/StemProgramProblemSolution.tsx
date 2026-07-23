@@ -1,4 +1,7 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import stemSolution from "../../../../Kidswowpics1/STEMpage/STEMsolution.JPG";
+import stemTower from "../../../../Kidswowpics1/STEMpage/STEMtower.png";
 
 export function StemProgramProblemSolution() {
   return (
@@ -6,6 +9,15 @@ export function StemProgramProblemSolution() {
       <Container>
         <div className="grid gap-8 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-6">
           <div className="rounded-3xl bg-white/80 p-8 ring-1 ring-navy/10 md:p-9">
+            <div className="relative mb-6 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-navy/5">
+              <Image
+                src={stemTower}
+                alt="A STEM tower build representing conventional classroom approaches"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 45vw"
+              />
+            </div>
             <h2 className="font-display text-xl font-bold text-navy md:text-2xl">
               The Problem
             </h2>
@@ -29,6 +41,15 @@ export function StemProgramProblemSolution() {
             <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-sky px-4 py-1 text-xs font-bold uppercase tracking-wider text-white lg:hidden">
               vs
             </span>
+            <div className="relative mb-6 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-sage/10">
+              <Image
+                src={stemSolution}
+                alt="Hands-on STEM projects and electronics set up for exploration"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 45vw"
+              />
+            </div>
             <h2 className="font-display text-xl font-bold text-navy md:text-2xl">
               The Solution
             </h2>

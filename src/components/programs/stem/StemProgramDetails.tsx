@@ -1,8 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { type ReactNode } from "react";
 import { Container } from "@/components/ui/Container";
-import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { StemProgramHowItWorks } from "@/components/programs/stem/StemProgramHowItWorks";
+import dadTeaching6 from "../../../../Kidswowpics1/STEMpage/dadteaching6.png";
+import kidsWithRobots from "../../../../Kidswowpics1/STEMpage/kidswithrobots.png";
+import kidsWowStory3 from "../../../../Kidswowpics1/STEMpage/kidswowstory3.jpg";
 
 function FactIcon({ children }: { children: ReactNode }) {
   return (
@@ -147,6 +150,21 @@ const NEED_TO_KNOW = [
   },
 ] as const;
 
+const HOW_IT_WORKS_PHOTOS = [
+  {
+    src: dadTeaching6,
+    alt: "KidsWow facilitator teaching a STEM concept",
+  },
+  {
+    src: kidsWowStory3,
+    alt: "Students exploring with flexible, hands-on STEM time",
+  },
+  {
+    src: kidsWithRobots,
+    alt: "Students working deeply on robotics projects",
+  },
+] as const;
+
 export function StemProgramDetails() {
   return (
     <section className="bg-sage/10 pt-10 pb-16 md:pt-12 md:pb-20 lg:pt-14 lg:pb-24">
@@ -177,16 +195,26 @@ export function StemProgramDetails() {
         <h3 className="mt-12 text-center font-display text-2xl font-semibold text-navy md:mt-14">
           How It Works
         </h3>
-        <div className="mt-8 grid grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] items-start gap-6 max-[520px]:grid-cols-1 max-[520px]:gap-8 lg:gap-10">
-          <div className="min-w-0 max-[520px]:mx-auto max-[520px]:max-w-sm">
-            <MediaPlaceholder
-              label="Excited kids — add photo to public/"
-              className="rounded-3xl"
-            />
-          </div>
-          <div className="min-w-0">
-            <StemProgramHowItWorks />
-          </div>
+
+        <div className="mx-auto mt-8 grid w-full max-w-4xl grid-cols-3 gap-2 sm:gap-4">
+          {HOW_IT_WORKS_PHOTOS.map((photo) => (
+            <div
+              key={photo.alt}
+              className="relative aspect-[4/3] min-w-0 overflow-hidden rounded-xl bg-white/50 ring-1 ring-navy/10 sm:rounded-2xl"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 31vw, 280px"
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="mx-auto mt-8 max-w-3xl md:mt-10">
+          <StemProgramHowItWorks />
         </div>
       </Container>
     </section>
