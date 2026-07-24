@@ -61,7 +61,7 @@ function FlowArrow() {
 
 export function MethodNutshell() {
   return (
-    <section className="bg-sage/10 py-14 md:py-20 lg:py-24">
+    <section className="bg-sage/10 py-20 md:py-28">
       <Container>
         <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl">
           The KidsWow Method in a Nutshell

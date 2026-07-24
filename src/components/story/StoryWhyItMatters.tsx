@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/Container";
 
 export function StoryWhyItMatters() {
   return (
-    <section className="bg-sage/10 py-14 md:py-20">
+    <section className="bg-sage/10 py-20 md:py-28">
       <Container>
         <div className="mx-auto max-w-3xl">
           <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl">

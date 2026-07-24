@@ -156,7 +156,7 @@ const FACTS = [
 
 export function PhysicsCreationAtAGlance() {
   return (
-    <section className="bg-sage/10 py-10 md:py-12 lg:py-14">
+    <section className="bg-sage/10 py-20 md:py-28">
       <Container>
         <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl">
           At a Glance

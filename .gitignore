@@ -18,6 +18,10 @@
 .DS_Store
 *.pem
 
+# Accidental LinkedIn page save (not part of the site)
+(13) FORTNA_ People _ LinkedIn.htm
+(13) FORTNA_ People _ LinkedIn_files/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

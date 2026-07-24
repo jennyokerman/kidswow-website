@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import boredKid from "../../../Kidswowpics1/KidsWow Home/boredkid1.png";
+import boredGirl from "../../../Kidswowpics1/KidsWow Home/boredgirl1.png";
 import kidsFreeRunning from "../../../Kidswowpics1/KidsWow Home/kidsfreerunning.png";
 
 export function Method() {
@@ -16,7 +16,7 @@ export function Method() {
           <div className="rounded-3xl bg-white/80 p-8 ring-1 ring-navy/10">
             <div className="relative mb-6 h-36 w-full overflow-hidden rounded-2xl bg-navy/5 sm:h-48 lg:h-52">
               <Image
-                src={boredKid}
+                src={boredGirl}
                 alt="A student feeling disengaged in a conventional classroom"
                 fill
                 className="object-cover"
@@ -71,7 +71,7 @@ export function Method() {
         </p>
 
         <div className="mt-10 flex justify-center">
-          <ButtonLink href="/about/method" size="lg">
+          <ButtonLink href="/about/method" variant="secondary" size="lg">
             The KidsWow Method
           </ButtonLink>
         </div>

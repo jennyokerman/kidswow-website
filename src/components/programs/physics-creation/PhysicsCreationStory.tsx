@@ -4,7 +4,7 @@ import { SITE } from "@/lib/site";
 
 export function PhysicsCreationStory() {
   return (
-    <section className="bg-white/60 py-10 md:py-12 lg:py-14">
+    <section className="bg-white/60 py-20 md:py-28">
       <Container>
         <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl lg:text-5xl">
           Why Physics &amp; Creation?
@@ -22,7 +22,7 @@ export function PhysicsCreationStory() {
             <p>
               The reason I am so passionate about this topic is because my
               father was a skeptic and a journalist who did not believe in the
-              creator God for most of my adult life. I wanted to find a way to
+              Creator God for most of my adult life. I wanted to find a way to
               show him that science and the Bible do not conflict.
             </p>
             <p>

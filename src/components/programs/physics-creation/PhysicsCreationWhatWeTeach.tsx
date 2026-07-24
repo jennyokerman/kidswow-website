@@ -4,7 +4,7 @@ const DID_YOU_KNOW =
 
 export function PhysicsCreationWhatWeTeach() {
   return (
-    <section className="py-10 md:py-12 lg:py-14">
+    <section className="py-20 md:py-28">
       <Container>
         <h2 className="text-center font-display text-2xl font-semibold leading-tight text-navy md:text-3xl">
           Light → Electromagnetic Waves

@@ -4,15 +4,28 @@ import { SITE } from "@/lib/site";
 
 export function StoryFounder() {
   return (
-    <section className="py-14 md:py-20 lg:py-24">
+    <section className="py-20 md:py-28">
       <Container>
         <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl">
           The Founder
         </h2>
 
         <div className="mx-auto mt-10 max-w-5xl lg:mt-12">
-          <div className="grid grid-cols-[minmax(0,0.58fr)_minmax(0,0.42fr)] items-center gap-6 max-[480px]:grid-cols-1 max-[480px]:gap-8 lg:gap-10">
-            <p className="min-w-0 text-base leading-relaxed text-charcoal/85 md:text-lg">
+          <div className="float-right mb-3 ml-3 w-[36%] min-w-[5.5rem] max-w-[14rem] sm:mb-4 sm:ml-5 md:ml-8 md:max-w-[18rem] lg:max-w-[20rem]">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-sage/10 ring-1 ring-sage/25 sm:rounded-2xl md:rounded-3xl">
+              <Image
+                src="/story/founder.jpg"
+                alt={`Photo of ${SITE.founder}, founder of KidsWow`}
+                fill
+                unoptimized
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 36vw, 20rem"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-4 text-xs leading-relaxed text-charcoal/85 sm:space-y-5 sm:text-sm md:text-base lg:text-lg">
+            <p>
               {SITE.founder} has loved learning since he was a kid. His mom would
               bring small machines home from work, and he became fascinated with
               taking them apart, discovering how they worked from the inside, and
@@ -22,22 +35,6 @@ export function StoryFounder() {
               to Japan. He lived in Japan for almost four decades, where he and
               his family launched KidsWow.
             </p>
-
-            <div className="min-w-0 max-[480px]:mx-auto max-[480px]:max-w-[19rem]">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-sage/10 ring-1 ring-sage/25">
-                <Image
-                  src="/story/founder.jpg"
-                  alt={`Photo of ${SITE.founder}, founder of KidsWow`}
-                  fill
-                  unoptimized
-                  className="object-cover object-top"
-                  sizes="(max-width: 480px) 304px, 42vw"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 space-y-5 text-base leading-relaxed text-charcoal/85 md:mt-10 md:text-lg">
             <p>
               When he returned to the United States in 2021, Warren was
               determined to continue to encourage and equip kids. He connected

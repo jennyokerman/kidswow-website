@@ -6,7 +6,7 @@ import { ProgramCardImage } from "./ProgramCardImage";
 const PROGRAMS = [
   {
     title: "Physics & Creation",
-    body: "KidsWow brings to life the biblical foundation of the universe with the modern understanding of light, electromagnetic waves, and motion. Experience “Let There Be Light” in a dynamic 30-minute to 3-hour experience perfect to inspire kids.",
+    body: "KidsWow brings to life the biblical foundation of the universe with the modern understanding of light, electromagnetic waves, and motion. Experience “Let There Be Light” in a dynamic 30-minute to 3-hour experience perfect for inspiring kids.",
     href: "/programs/physics-creation",
     buttonLabel: "Explore Physics & Creation",
     image: "/programs/physics-creation.png",
@@ -52,10 +52,10 @@ export function Programs() {
                   placeholderLabel={program.imageLabel}
                 />
               </div>
-              <h3 className="mt-6 font-display text-xl font-bold text-navy md:text-2xl">
+              <h3 className="mt-6 text-center font-display text-xl font-bold text-navy md:text-2xl">
                 {program.title}
               </h3>
-              <p className="mt-4 flex-1 text-base leading-relaxed text-charcoal/80">
+              <p className="mt-4 flex-1 text-left text-base leading-relaxed text-charcoal/80">
                 {program.body}
               </p>
               <div className="mt-8">

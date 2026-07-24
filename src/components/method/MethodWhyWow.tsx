@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/Container";
 
 export function MethodWhyWow() {
   return (
-    <section className="bg-white/60 py-14 md:py-20">
+    <section className="bg-white/60 py-20 md:py-28">
       <Container>
         <div className="mx-auto max-w-3xl">
           <h2 className="font-display text-3xl font-semibold text-navy md:text-4xl">
@@ -19,13 +19,13 @@ export function MethodWhyWow() {
               magical. Always they will say something like &ldquo;Wow! This is so
               cool! Why is it doing that?&rdquo; Kids naturally ask lots of
               questions and want to learn, particularly during a &ldquo;Wow
-              Moment&rdquo;. Warren learned to pay attention to those moments
+              Moment&rdquo;. Warren Okerman, founder of KidsWow, learned to pay attention to those moments
               and to remember what sparked it.
             </p>
             <p>
               He found certain activities or demonstrations could consistently
               create that spark of joy, while others were different for each
-              individual. Some young people gravitate towards music, or dance,
+              individual. Some young people gravitate towards music, dance,
               coding, building make-belief towns, or maybe they&apos;re
               interested in everything at once. A Wow Moment happens through
               discovering, seeing, feeling, and experiencing something real.
@@ -35,7 +35,7 @@ export function MethodWhyWow() {
               but if someone&mdash;like a teacher, parent, friend, or
               facilitator&mdash;recognizes and mirrors that joy back to the
               child: the &ldquo;Wow&rdquo; becomes contagious and can literally
-              change lives in a single moment. Warren has seen it happen again
+              change lives in a single moment. We have seen it happen again
               and again.
             </p>
             <p className="font-display text-lg font-semibold text-navy md:text-xl">

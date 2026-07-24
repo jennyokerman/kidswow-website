@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/Container";
 
 export function StoryHero() {
   return (
-    <section className="py-14 md:py-20 lg:py-24">
+    <section className="py-16 md:py-24 lg:py-28">
       <Container>
         <div className="mx-auto max-w-3xl">
           <h1 className="text-center font-display text-4xl font-semibold text-navy md:text-5xl">

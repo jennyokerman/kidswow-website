@@ -19,4 +19,9 @@
   .bg-navy :is(a, button)[class*="bg-amber"] {
     @apply text-white;
   }
+
+  /* Secondary/outline buttons stay visible on navy backgrounds */
+  .bg-navy :is(a, button)[class*="border-2"]:not([class*="bg-amber"]) {
+    @apply border-cream/40 text-cream bg-transparent hover:bg-cream hover:text-navy;
+  }
 }

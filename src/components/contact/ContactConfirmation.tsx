@@ -44,7 +44,7 @@ export function ContactConfirmation({
           possible.
         </p>
         <div className="mt-8">
-          <ButtonLink href="/" size="lg">
+          <ButtonLink href="/" variant="secondary" size="lg">
             Return to Home
           </ButtonLink>
         </div>

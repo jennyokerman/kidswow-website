@@ -23,6 +23,7 @@ export default function ContactPage() {
             <p className="mt-4 text-lg leading-relaxed text-charcoal/80">
               Get in touch through social media
             </p>
+
             <div className="mt-8">
               <ContactSocialLinks />
             </div>

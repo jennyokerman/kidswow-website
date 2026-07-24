@@ -6,6 +6,8 @@ import {
   KIDSWOW_STORIES_INTRO,
   type KidsWowStory,
 } from "@/content/kidswow-stories";
+import { useCarouselAutoAdvance } from "@/hooks/useCarouselAutoAdvance";
+import { CarouselOverlayArrows } from "@/components/ui/CarouselOverlayArrows";
 import inspirationOne from "../../../Kidswowpics1/KidsWow Home/kidswowinspiration1.png";
 import inspirationTwo from "../../../Kidswowpics1/KidsWow Home/kidswowinspiration2.png";
 import inspirationThree from "../../../Kidswowpics1/KidsWow Home/kidswowinspiration3.png";
@@ -39,7 +41,11 @@ export function StoriesCarousel({ stories }: { stories: KidsWowStory[] }) {
     const track = trackRef.current;
     if (!track) return;
     const slide = track.children[index] as HTMLElement | undefined;
-    slide?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+    slide?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "start",
+    });
     setActiveIndex(index);
   }, []);
 
@@ -52,108 +58,104 @@ export function StoriesCarousel({ stories }: { stories: KidsWowStory[] }) {
     setActiveIndex(Math.min(Math.max(index, 0), stories.length - 1));
   }, [stories.length]);
 
-  const goPrev = () => scrollToIndex(activeIndex <= 0 ? stories.length - 1 : activeIndex - 1);
-  const goNext = () => scrollToIndex(activeIndex >= stories.length - 1 ? 0 : activeIndex + 1);
+  const goPrev = useCallback(() => {
+    scrollToIndex(activeIndex <= 0 ? stories.length - 1 : activeIndex - 1);
+  }, [activeIndex, scrollToIndex, stories.length]);
+
+  const goNext = useCallback(() => {
+    scrollToIndex(activeIndex >= stories.length - 1 ? 0 : activeIndex + 1);
+  }, [activeIndex, scrollToIndex, stories.length]);
+
+  const { containerRef, pauseProps } = useCarouselAutoAdvance(goNext);
 
   return (
     <div className="relative mt-12">
-      <div
-        ref={trackRef}
-        onScroll={handleScroll}
-        className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        aria-roledescription="carousel"
-        aria-label="KidsWow inspiration"
-      >
-        {stories.map((story, index) => {
-          const media = STORY_MEDIA[story.id];
+      <div ref={containerRef} className="relative" {...pauseProps}>
+        <div
+          ref={trackRef}
+          onScroll={handleScroll}
+          className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          aria-roledescription="carousel"
+          aria-label="KidsWow inspiration"
+        >
+          {stories.map((story, index) => {
+            const media = STORY_MEDIA[story.id];
 
-          return (
-            <article
-              key={story.id}
-              className="w-full shrink-0 snap-start snap-always px-1"
-              aria-roledescription="slide"
-              aria-label={`Story ${index + 1} of ${stories.length}`}
-            >
-              <blockquote className="mx-auto max-w-5xl rounded-3xl bg-white p-4 shadow-sm ring-1 ring-navy/5 sm:p-6 md:p-8">
-                <div
-                  className={`grid items-center gap-4 sm:gap-6 md:gap-10 ${
-                    media.side === "left"
-                      ? "grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]"
-                      : "grid-cols-[minmax(0,0.58fr)_minmax(0,0.42fr)]"
-                  }`}
-                >
+            return (
+              <article
+                key={story.id}
+                className="w-full shrink-0 snap-start snap-always px-1"
+                aria-roledescription="slide"
+                aria-label={`Story ${index + 1} of ${stories.length}`}
+              >
+                <blockquote className="mx-auto max-w-5xl rounded-3xl bg-white p-4 shadow-sm ring-1 ring-navy/5 sm:p-6 md:p-8">
                   <div
-                    className={`relative aspect-[4/3] min-w-0 overflow-hidden rounded-2xl bg-sage/10 ${
-                      media.side === "right" ? "order-2" : ""
+                    className={`grid items-center gap-4 sm:gap-6 md:gap-10 ${
+                      media.side === "left"
+                        ? "grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]"
+                        : "grid-cols-[minmax(0,0.58fr)_minmax(0,0.42fr)]"
                     }`}
                   >
-                    <Image
-                      src={media.src}
-                      alt={media.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 40vw, 400px"
-                    />
+                    <div
+                      className={`relative aspect-[4/3] min-w-0 overflow-hidden rounded-2xl bg-sage/10 ${
+                        media.side === "right" ? "order-2" : ""
+                      }`}
+                    >
+                      <Image
+                        src={media.src}
+                        alt={media.alt}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 40vw, 400px"
+                      />
+                    </div>
+
+                    <div className="min-w-0 py-2 sm:py-4">
+                      <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-sage sm:text-xs">
+                        {story.label}
+                      </p>
+                      <p className="mt-3 font-display text-xs leading-relaxed text-navy sm:mt-5 sm:text-base md:text-lg md:leading-relaxed lg:text-xl">
+                        &ldquo;{story.text}&rdquo;
+                      </p>
+                      <footer className="mt-4 text-[0.65rem] font-medium text-sky sm:mt-6 sm:text-xs md:mt-8 md:text-sm">
+                        {KIDSWOW_STORIES_INTRO.attribution}
+                      </footer>
+                    </div>
                   </div>
-
-                  <div className="min-w-0 py-2 sm:py-4">
-                    <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-sage sm:text-xs">
-                      {story.label}
-                    </p>
-                    <p className="mt-3 font-display text-xs leading-relaxed text-navy sm:mt-5 sm:text-base md:text-lg md:leading-relaxed lg:text-xl">
-                      &ldquo;{story.text}&rdquo;
-                    </p>
-                    <footer className="mt-4 text-[0.65rem] font-medium text-sky sm:mt-6 sm:text-xs md:mt-8 md:text-sm">
-                      {KIDSWOW_STORIES_INTRO.attribution}
-                    </footer>
-                  </div>
-                </div>
-              </blockquote>
-            </article>
-          );
-        })}
-      </div>
-
-      <div className="mt-8 flex items-center justify-center gap-6">
-        <button
-          type="button"
-          onClick={goPrev}
-          className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-navy/20 text-navy transition-colors hover:border-navy hover:bg-navy hover:text-cream"
-          aria-label="Previous story"
-        >
-          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-
-        <div className="flex gap-2" role="tablist" aria-label="Choose a story">
-          {stories.map((story, index) => (
-            <button
-              key={story.id}
-              type="button"
-              role="tab"
-              aria-selected={index === activeIndex}
-              aria-label={`Go to story ${index + 1}`}
-              onClick={() => scrollToIndex(index)}
-              className={`h-2.5 rounded-full transition-all ${
-                index === activeIndex
-                  ? "w-8 bg-sky"
-                  : "w-2.5 bg-navy/20 hover:bg-navy/40"
-              }`}
-            />
-          ))}
+                </blockquote>
+              </article>
+            );
+          })}
         </div>
 
-        <button
-          type="button"
-          onClick={goNext}
-          className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-navy/20 text-navy transition-colors hover:border-navy hover:bg-navy hover:text-cream"
-          aria-label="Next story"
-        >
-          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+        <CarouselOverlayArrows
+          onPrev={goPrev}
+          onNext={goNext}
+          prevLabel="Previous story"
+          nextLabel="Next story"
+        />
+      </div>
+
+      <div
+        className="mt-6 flex justify-center gap-2"
+        role="tablist"
+        aria-label="Choose a story"
+      >
+        {stories.map((story, index) => (
+          <button
+            key={story.id}
+            type="button"
+            role="tab"
+            aria-selected={index === activeIndex}
+            aria-label={`Go to story ${index + 1}`}
+            onClick={() => scrollToIndex(index)}
+            className={`h-2.5 rounded-full transition-all ${
+              index === activeIndex
+                ? "w-8 bg-sky"
+                : "w-2.5 bg-navy/20 hover:bg-navy/40"
+            }`}
+          />
+        ))}
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ const PROMOTES = [
 
 export function NaturalLearningPromotes() {
   return (
-    <section className="bg-white/60 py-14 md:py-20">
+    <section className="bg-white/60 py-20 md:py-28">
       <Container>
         <p className="text-center text-sm font-semibold uppercase tracking-widest text-sky">
           The Natural Learning Method Promotes:

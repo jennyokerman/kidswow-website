@@ -1,4 +1,5 @@
 import Image, { type StaticImageData } from "next/image";
+import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import dadTeaching6 from "../../../../Kidswowpics1/STEMpage/dadteaching6.png";
@@ -29,14 +30,15 @@ const EXPERIENCE_CARDS: {
 
 export function StemProgramExperience() {
   return (
-    <section className="py-10 md:py-12 lg:py-14">
+    <section className="py-20 md:py-28">
       <Container>
         <SectionHeading
-          title="What is a KidsWow STEM Experience Like?"
+          eyebrow="In the room"
+          title="See Wow in Action"
           align="center"
         />
 
-        <div className="mt-12 grid grid-cols-3 gap-2 sm:gap-4 lg:mt-14 lg:gap-6">
+        <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-4 lg:mt-10 lg:gap-6">
           {EXPERIENCE_CARDS.map((card) => (
             <article key={card.imageAlt} className="min-w-0">
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-sage/15 ring-1 ring-sage/30 sm:rounded-2xl">
@@ -58,6 +60,12 @@ export function StemProgramExperience() {
         <p className="mx-auto mt-10 max-w-3xl text-center text-lg font-bold text-navy md:mt-12 md:text-xl">
           We forget what we hear. We remember what we do.
         </p>
+
+        <div className="mt-8 flex justify-center md:mt-10">
+          <ButtonLink href="/about/method" variant="secondary" size="lg">
+            Explore KidsWow Method
+          </ButtonLink>
+        </div>
       </Container>
     </section>
   );
