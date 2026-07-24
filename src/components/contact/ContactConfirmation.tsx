@@ -37,7 +37,7 @@ export function ContactConfirmation({
           id="contact-confirmation-title"
           className="pr-8 font-display text-2xl font-semibold text-navy md:text-3xl"
         >
-          Thank you for contacting KidsWow Programs!
+          Thank-you for contacting KidsWow!
         </h2>
         <p className="mt-4 text-base leading-relaxed text-charcoal/80">
           We will review the information you sent and respond as soon as
