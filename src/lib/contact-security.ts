@@ -153,6 +153,14 @@ export async function verifyTurnstileToken(token: string, ip: string) {
     },
   );
 
-  const result = (await response.json()) as { success?: boolean };
+  const result = (await response.json()) as {
+    success?: boolean;
+    "error-codes"?: string[];
+  };
+
+  if (result.success !== true) {
+    console.error("Turnstile verification failed:", result["error-codes"]);
+  }
+
   return result.success === true;
 }

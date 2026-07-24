@@ -6,6 +6,7 @@ import { ContactConfirmation } from "@/components/contact/ContactConfirmation";
 import { ContactProgressBar } from "@/components/contact/ContactProgressBar";
 import {
   ContactTurnstile,
+  type ContactTurnstileHandle,
 } from "@/components/contact/ContactTurnstile";
 import {
   FieldGroup,
@@ -64,6 +65,7 @@ export function ContactForm({
   const [submitError, setSubmitError] = useState("");
   const formStartedAt = useRef(Date.now());
   const formReadyAt = useRef<number | null>(null);
+  const turnstileRef = useRef<ContactTurnstileHandle>(null);
   const turnstileEnabled = Boolean(turnstileSiteKey);
 
   useEffect(() => {
@@ -159,10 +161,26 @@ export function ContactForm({
     setIsSubmitting(true);
     setSubmitError("");
 
-    if (turnstileEnabled && !turnstileToken) {
-      setSubmitError("Please complete the verification check before submitting.");
-      setIsSubmitting(false);
-      return;
+    let activeTurnstileToken = turnstileToken;
+
+    if (turnstileEnabled) {
+      try {
+        if (!turnstileRef.current) {
+          throw new Error(
+            "Please complete the verification check before submitting.",
+          );
+        }
+        activeTurnstileToken = await turnstileRef.current.refreshToken();
+        setTurnstileToken(activeTurnstileToken);
+      } catch (error) {
+        setSubmitError(
+          error instanceof Error
+            ? error.message
+            : "Please complete the verification check before submitting.",
+        );
+        setIsSubmitting(false);
+        return;
+      }
     }
 
     try {
@@ -175,7 +193,7 @@ export function ContactForm({
           _hpSubject: hpSubject,
           formStartedAt: formStartedAt.current,
           formReadyAt: formReadyAt.current ?? undefined,
-          turnstileToken,
+          turnstileToken: activeTurnstileToken,
         }),
       });
 
@@ -508,6 +526,7 @@ export function ContactForm({
 
               {turnstileSiteKey && (
                 <ContactTurnstile
+                  ref={turnstileRef}
                   siteKey={turnstileSiteKey}
                   onToken={setTurnstileToken}
                   onExpire={() => setTurnstileToken("")}
@@ -549,7 +568,7 @@ export function ContactForm({
               <Button
                 type="submit"
                 className="sm:ml-auto"
-                disabled={isSubmitting || (turnstileEnabled && !turnstileToken)}
+                disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending…" : "Submit"}
               </Button>
