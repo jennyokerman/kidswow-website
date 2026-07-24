@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import airHockeyKids from "../../../Kidswowpics1/KidswowMethod/airhockeykids.jpg";
-import dadMagnets2 from "../../../Kidswowpics1/KidswowMethod/dadmagnets2.png";
-import happyMiddleSchoolers from "../../../Kidswowpics1/KidswowMethod/happymiddleschoolers.png";
+import dadMagnets2 from "../../../Kidswowpics1/KidswowMethod/dadmagnets2.jpg";
+import happyMiddleSchoolers from "../../../Kidswowpics1/KidswowMethod/happymiddleschoolers.jpg";
 
 const WOW_PHOTOS = [
   {

@@ -9,9 +9,9 @@ const PROGRAMS = [
     body: "KidsWow brings to life the biblical foundation of the universe with the modern understanding of light, electromagnetic waves, and motion. Experience “Let There Be Light” in a dynamic 30-minute to 3-hour experience perfect for inspiring kids.",
     href: "/programs/physics-creation",
     buttonLabel: "Explore Physics & Creation",
-    image: "/programs/physics-creation.png",
+    image: "/programs/physics-creation.jpg",
     imageAlt: "Physics and Creation program",
-    imageLabel: "Add physics-creation.png to public/programs/",
+    imageLabel: "Add physics-creation.jpg to public/programs/",
   },
   {
     title: "KidsWow STEM",
@@ -27,9 +27,9 @@ const PROGRAMS = [
     body: "KidsWow Finance Foundations combines concrete practice with essential financial education to equip participants to become confident masters of their finances. They learn how to grow and protect wealth and discover the entrepreneurial mindset. This program is perfect for 10th grade and above.",
     href: "/programs/finance",
     buttonLabel: "Explore Finance Foundations",
-    image: "/programs/finance.png",
+    image: "/programs/finance.jpg",
     imageAlt: "Finance Foundations program",
-    imageLabel: "Add finance.png to public/programs/",
+    imageLabel: "Add finance.jpg to public/programs/",
   },
 ] as const;
 

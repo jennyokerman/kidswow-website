@@ -2,8 +2,8 @@ import Image, { type StaticImageData } from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import dadTeaching6 from "../../../../Kidswowpics1/STEMpage/dadteaching6.png";
-import kidsWithRobots from "../../../../Kidswowpics1/STEMpage/kidswithrobots.png";
+import dadTeaching6 from "../../../../Kidswowpics1/STEMpage/dadteaching6.jpg";
+import kidsWithRobots from "../../../../Kidswowpics1/STEMpage/kidswithrobots.jpg";
 import kidsWowStory3 from "../../../../Kidswowpics1/STEMpage/kidswowstory3.jpg";
 
 const EXPERIENCE_CARDS: {

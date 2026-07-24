@@ -27,7 +27,6 @@ export function ProgramCardImage({
         src={src}
         alt={alt}
         fill
-        unoptimized
         className="object-cover"
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         onError={() => setUsePlaceholder(true)}

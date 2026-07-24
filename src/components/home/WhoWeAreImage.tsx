@@ -29,7 +29,6 @@ export function WhoWeAreImage() {
           src="/about.jpg"
           alt="KidsWow — who we are"
           fill
-          unoptimized
           className="object-cover object-top"
           sizes="(max-width: 480px) 272px, 42vw"
           onError={() => setUsePlaceholder(true)}

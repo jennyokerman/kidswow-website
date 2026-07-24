@@ -17,7 +17,6 @@ export function StoryFounder() {
                 src="/story/founder.jpg"
                 alt={`Photo of ${SITE.founder}, founder of KidsWow`}
                 fill
-                unoptimized
                 className="object-cover object-top"
                 sizes="(max-width: 768px) 36vw, 20rem"
               />

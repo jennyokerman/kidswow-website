@@ -1,7 +1,7 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { ProgramCardImage } from "@/components/home/ProgramCardImage";
-import cuteKid from "../../../Kidswowpics1/cutekid.png";
+import cuteKid from "../../../Kidswowpics1/cutekid.jpg";
 
 const PROGRAMS = [
   {
@@ -20,7 +20,7 @@ const PROGRAMS = [
     buttonLabel: "Contact Us",
     image: cuteKid.src,
     imageAlt: "KidsWow student",
-    imageLabel: "Add cutekid.png",
+    imageLabel: "Add cutekid.jpg",
   },
 ] as const;
 

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import heroImage from "../../../../Kidswowpics1/STEMpage/hero1.png";
+import heroImage from "../../../../Kidswowpics1/STEMpage/hero1.jpg";
 
 export function StemProgramHero() {
   return (

@@ -23,10 +23,9 @@ export function PhysicsCreationLightbulbImage() {
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[13rem] overflow-hidden rounded-2xl bg-cream shadow-sm ring-1 ring-sage/25 sm:max-w-[15rem] md:mx-0 md:max-w-[17rem]">
       <Image
-        src="/color-lightbulb.png"
+        src="/color-lightbulb.jpg"
         alt="Colorful lightbulb illustration for the Let There Be Light experience"
         fill
-        unoptimized
         className="object-contain object-center p-2"
         sizes="(max-width: 768px) 208px, 272px"
         onError={() => setImageFailed(true)}

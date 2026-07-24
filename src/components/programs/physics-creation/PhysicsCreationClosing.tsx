@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { ContactCtaBand } from "@/components/ui/ContactCtaBand";
 import { ProgramCardImage } from "@/components/home/ProgramCardImage";
 import { ButtonLink } from "@/components/ui/Button";
-import physicsCtaImage from "../../../../Kidswowpics1/STEMpage/dadteaching4.png";
+import physicsCtaImage from "../../../../Kidswowpics1/STEMpage/dadteaching4.jpg";
 
 const EXPLORE_PROGRAMS = [
   {
@@ -19,9 +19,9 @@ const EXPLORE_PROGRAMS = [
     body: "Practical financial education for teens and young adults — building confidence with money, wealth, and an entrepreneurial mindset.",
     href: "/programs/finance",
     buttonLabel: "Explore Finance Foundations",
-    image: "/programs/finance.png",
+    image: "/programs/finance.jpg",
     imageAlt: "Finance Foundations program",
-    imageLabel: "Add finance.png to public/programs/",
+    imageLabel: "Add finance.jpg to public/programs/",
   },
 ] as const;
 

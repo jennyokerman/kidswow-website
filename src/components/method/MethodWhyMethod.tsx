@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import girlWithMagnet from "../../../Kidswowpics1/KidswowMethod/girlwithmagnet.png";
+import girlWithMagnet from "../../../Kidswowpics1/KidswowMethod/girlwithmagnet.jpg";
 
 export function MethodWhyMethod() {
   return (

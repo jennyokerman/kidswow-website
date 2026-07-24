@@ -8,9 +8,9 @@ import {
 } from "@/content/kidswow-stories";
 import { useCarouselAutoAdvance } from "@/hooks/useCarouselAutoAdvance";
 import { CarouselOverlayArrows } from "@/components/ui/CarouselOverlayArrows";
-import inspirationOne from "../../../Kidswowpics1/KidsWow Home/kidswowinspiration1.png";
-import inspirationTwo from "../../../Kidswowpics1/KidsWow Home/kidswowinspiration2.png";
-import inspirationThree from "../../../Kidswowpics1/KidsWow Home/kidswowinspiration3.png";
+import inspirationOne from "../../../Kidswowpics1/KidsWow Home/kidswowinspiration1.jpg";
+import inspirationTwo from "../../../Kidswowpics1/KidsWow Home/kidswowinspiration2.jpg";
+import inspirationThree from "../../../Kidswowpics1/KidsWow Home/kidswowinspiration3.jpg";
 
 const STORY_MEDIA: Record<
   string,

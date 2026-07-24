@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import boredGirl from "../../../Kidswowpics1/KidsWow Home/boredgirl1.png";
-import kidsFreeRunning from "../../../Kidswowpics1/KidsWow Home/kidsfreerunning.png";
+import boredGirl from "../../../Kidswowpics1/KidsWow Home/boredgirl1.jpg";
+import kidsFreeRunning from "../../../Kidswowpics1/KidsWow Home/kidsfreerunning.jpg";
 
 export function Method() {
   return (

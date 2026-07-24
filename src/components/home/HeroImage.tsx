@@ -16,7 +16,7 @@ export function HeroImage() {
   if (usePlaceholder) {
     return (
       <div className={wrapperClass}>
-        <MediaPlaceholder label="Hero image — add public/hero.png" className="rounded-2xl" />
+        <MediaPlaceholder label="Hero image — add public/hero.jpg" className="rounded-2xl" />
       </div>
     );
   }
@@ -24,11 +24,10 @@ export function HeroImage() {
   return (
     <div className={wrapperClass}>
       <Image
-        src="/hero.png"
+        src="/hero.jpg"
         alt="KidsWow — inspiring hands-on learning"
         width={WIDTH}
         height={HEIGHT}
-        unoptimized
         className="h-auto w-full rounded-2xl object-cover ring-1 ring-navy/10"
         sizes="(max-width: 768px) 416px, 50vw"
         onError={() => setUsePlaceholder(true)}

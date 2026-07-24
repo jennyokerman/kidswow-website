@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import highSchoolStem from "../../../Kidswowpics1/KidsWow Home/highschoolstem.png";
-import kidsFriends from "../../../Kidswowpics1/KidsWow Home/kidsfriends.png";
+import highSchoolStem from "../../../Kidswowpics1/KidsWow Home/highschoolstem.jpg";
+import kidsFriends from "../../../Kidswowpics1/KidsWow Home/kidsfriends.jpg";
 import kidsPlaying from "../../../Kidswowpics1/KidsWow Home/kidsplaying1.jpg";
 
 const BENEFIT_PHOTOS = [

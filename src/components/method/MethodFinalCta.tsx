@@ -8,9 +8,9 @@ const PROGRAMS = [
     body: "Experience “Let There Be Light” — biblical foundation and modern physics brought to life through light, waves, and motion.",
     href: "/programs/physics-creation",
     buttonLabel: "Explore Physics & Creation",
-    image: "/programs/physics-creation.png",
+    image: "/programs/physics-creation.jpg",
     imageAlt: "Physics and Creation program",
-    imageLabel: "Add physics-creation.png to public/programs/",
+    imageLabel: "Add physics-creation.jpg to public/programs/",
   },
   {
     title: "KidsWow STEM",
@@ -26,9 +26,9 @@ const PROGRAMS = [
     body: "Practical financial education for teens and young adults — building confidence with money, wealth, and an entrepreneurial mindset.",
     href: "/programs/finance",
     buttonLabel: "Explore Finance Foundations",
-    image: "/programs/finance.png",
+    image: "/programs/finance.jpg",
     imageAlt: "Finance Foundations program",
-    imageLabel: "Add finance.png to public/programs/",
+    imageLabel: "Add finance.jpg to public/programs/",
   },
 ] as const;
 
