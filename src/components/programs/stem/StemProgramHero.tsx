@@ -9,7 +9,7 @@ export function StemProgramHero() {
       <Container>
         <div className="grid grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] items-center gap-6 max-[480px]:grid-cols-1 max-[480px]:gap-8 lg:gap-14">
           <div className="flex min-w-0 flex-col gap-4 text-left max-[480px]:mx-auto max-[480px]:max-w-xl max-[480px]:text-center sm:gap-5">
-            <h1 className="font-display text-3xl font-semibold leading-tight text-navy min-[481px]:text-4xl lg:text-[2.65rem] lg:leading-snug xl:whitespace-nowrap xl:text-[2.75rem]">
+            <h1 className="font-display text-4xl font-semibold leading-tight text-navy md:text-5xl lg:text-6xl">
               KidsWow STEM
             </h1>
             <p className="text-base leading-relaxed text-charcoal/85 min-[481px]:text-lg lg:text-xl">

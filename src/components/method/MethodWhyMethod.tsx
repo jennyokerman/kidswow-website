@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import girlWithMagnet from "../../../Kidswowpics1/KidswowMethod/girlwithmagnet.jpg";
 
@@ -40,6 +41,12 @@ export function MethodWhyMethod() {
               Learning becomes fun again, and difficult subjects become
               understandable.
             </p>
+          </div>
+
+          <div className="mt-10 flex justify-center md:mt-12">
+            <ButtonLink href="/#kidswow-stories" size="lg">
+              Explore More KidsWow Inspiration
+            </ButtonLink>
           </div>
         </div>
       </Container>
