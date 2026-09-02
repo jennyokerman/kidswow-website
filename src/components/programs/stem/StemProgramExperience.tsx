@@ -50,7 +50,7 @@ export function StemProgramExperience() {
                   sizes="(max-width: 1024px) 31vw, 320px"
                 />
               </div>
-              <p className="mt-3 text-left text-xs leading-relaxed text-charcoal/85 sm:mt-4 sm:text-sm md:text-base lg:text-lg">
+              <p className="mt-3 text-left text-base leading-relaxed text-charcoal/85 sm:mt-4 md:text-lg">
                 {card.text}
               </p>
             </article>

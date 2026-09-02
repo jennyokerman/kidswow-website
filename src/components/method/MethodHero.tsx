@@ -1,4 +1,7 @@
 import { Container } from "@/components/ui/Container";
+import { YouTubeFacade } from "@/components/ui/YouTubeFacade";
+
+const YOUTUBE_ID = "w3d590Nde9o";
 
 export function MethodHero() {
   return (
@@ -10,17 +13,14 @@ export function MethodHero() {
           </h1>
 
           <div
-            className="relative mt-10 aspect-video w-full overflow-hidden rounded-3xl bg-navy/5 ring-1 ring-navy/10 md:mt-12"
+            className="mt-10 md:mt-12"
             role="region"
             aria-label="KidsWow Method video"
           >
-            <iframe
-              className="h-full w-full"
-              src="https://www.youtube-nocookie.com/embed/w3d590Nde9o"
+            <YouTubeFacade
+              videoId={YOUTUBE_ID}
               title="The KidsWow Method"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
+              className="rounded-3xl ring-1 ring-navy/10"
             />
           </div>
         </div>

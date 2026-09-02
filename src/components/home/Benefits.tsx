@@ -24,10 +24,10 @@ export function Benefits() {
     <section id="benefits" className="bg-sage/10 py-20 md:py-28">
       <Container>
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="font-display text-3xl font-semibold leading-tight text-navy md:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-semibold leading-tight text-navy md:text-4xl">
             Have you noticed just how fast the world is changing?
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-charcoal/85 md:text-xl">
+          <p className="mt-6 text-base leading-relaxed text-charcoal/85 md:text-lg">
             KidsWow creates an environment where kids are valued, develop internal
             confidence, and gain real life experience to navigate an increasingly
             complex world.

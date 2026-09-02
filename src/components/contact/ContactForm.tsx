@@ -226,7 +226,7 @@ export function ContactForm({
     <>
       <div className="rounded-3xl bg-white/80 p-6 shadow-sm ring-1 ring-navy/10 md:p-8 lg:p-10">
         <div className="mb-8 text-center">
-          <h2 className="font-display text-2xl font-semibold text-navy md:text-3xl">
+          <h2 className="font-display text-3xl font-semibold text-navy md:text-4xl">
             KidsWow Program Inquiry
           </h2>
           <div

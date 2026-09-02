@@ -6,12 +6,12 @@ export function PhysicsCreationWhatWeTeach() {
   return (
     <section className="py-20 md:py-28">
       <Container>
-        <h2 className="text-center font-display text-2xl font-semibold leading-tight text-navy md:text-3xl">
+        <h2 className="text-center font-display text-3xl font-semibold leading-tight text-navy md:text-4xl">
           Light → Electromagnetic Waves
         </h2>
 
         <div className="mx-auto mt-10 max-w-5xl md:mt-12 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(220px,280px)] lg:items-start lg:gap-10">
-          <div className="space-y-6 text-lg leading-relaxed text-charcoal/85 md:text-xl">
+          <div className="space-y-6 text-base leading-relaxed text-charcoal/85 md:text-lg">
             <p className="font-display text-xl font-semibold text-navy md:text-2xl">
               Did you know that we can&apos;t see most light?
             </p>

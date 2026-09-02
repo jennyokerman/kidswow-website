@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { ContactCtaBand } from "@/components/ui/ContactCtaBand";
 import { ProgramCardImage } from "@/components/home/ProgramCardImage";
 import { ButtonLink } from "@/components/ui/Button";
-import physicsCtaImage from "../../../../Kidswowpics1/STEMpage/dadteaching4.jpg";
+import financeCtaImage from "../../../../Kidswowpics1/money.png";
 
 const EXPLORE_PROGRAMS = [
   {
@@ -15,20 +15,20 @@ const EXPLORE_PROGRAMS = [
     imageLabel: "Add stem.png to public/programs/",
   },
   {
-    title: "Finance Foundations",
-    body: "Practical financial education for teens and young adults — building confidence with money, wealth, and an entrepreneurial mindset.",
-    href: "/programs/finance",
-    buttonLabel: "Explore Finance Foundations",
-    image: "/programs/finance.jpg",
-    imageAlt: "Finance Foundations program",
-    imageLabel: "Add finance.jpg to public/programs/",
+    title: "Physics & Creation",
+    body: "Experience “Let There Be Light” — biblical foundation and modern physics brought to life through light, waves, and motion.",
+    href: "/programs/physics-creation",
+    buttonLabel: "Explore Physics & Creation",
+    image: "/programs/physics-creation.jpg",
+    imageAlt: "Physics and Creation program",
+    imageLabel: "Add physics-creation.jpg to public/programs/",
   },
 ] as const;
 
-export function PhysicsCreationClosing() {
+export function FinanceFoundationsClosing() {
   return (
     <>
-      <section className="py-20 md:py-28">
+      <section className="bg-sage/10 py-20 md:py-28">
         <Container>
           <div className="mx-auto max-w-5xl text-center">
             <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl">
@@ -74,30 +74,27 @@ export function PhysicsCreationClosing() {
       </section>
 
       <ContactCtaBand
-        title="Reach Out Today"
+        title="Ready to Build Financial Confidence?"
         body={
           <>
             <p>
-              STEM learning develops qualities that align closely with
-              faith-driven leadership, such as disciplined thinking, problem
-              solving,
-              creativity, and perseverance. This is why it is so important that we
-              learn that faith and science are in harmony.
+              Finance Foundations gives young adults the practical tools to
+              handle money with confidence instead of fear. Whether you&apos;re a
+              homeschool family, church youth group, or group of friends in
+              college, we&apos;d love to hear about your group.
             </p>
             <p className="mt-4">
-              Get a group together to experience the{" "}
-              <span className="font-semibold text-amber">
-                &ldquo;WOW&rdquo;
-              </span>{" "}
-              of science and faith working in unison together.
+              KidsWow is looking for partners in the Kansas City Metro who want
+              to invest in real-world financial education for the next
+              generation.
             </p>
           </>
         }
-        buttonLabel="Contact Us"
-        image={physicsCtaImage}
-        imageAlt="A KidsWow facilitator teaching a hands-on physics lesson"
-        imageObjectPosition="40% 38%"
-        imageWrapperClassName="relative mr-auto aspect-square w-full max-w-[16rem] justify-self-start overflow-hidden rounded-2xl ring-2 ring-amber/70 ring-offset-2 ring-offset-sky sm:max-w-[18rem] md:max-w-[20rem]"
+        buttonLabel="Let's Connect"
+        image={financeCtaImage}
+        imageAlt="Financial education and money management concepts"
+        imagePosition="left"
+        fullWidthTitle
       />
     </>
   );

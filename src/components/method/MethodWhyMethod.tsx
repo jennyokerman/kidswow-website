@@ -24,7 +24,7 @@ export function MethodWhyMethod() {
             </div>
           </div>
 
-          <div className="space-y-4 text-xs leading-relaxed text-charcoal/85 sm:space-y-5 sm:text-sm md:text-base lg:text-lg">
+          <div className="space-y-4 text-base leading-relaxed text-charcoal/85 sm:space-y-5 md:text-lg">
             <p>
               Kids like to learn until it becomes too scary, too risky, or too
               boring. Every person will experience criticism and fear. For some,

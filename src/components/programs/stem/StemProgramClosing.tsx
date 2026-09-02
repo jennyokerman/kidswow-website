@@ -31,7 +31,7 @@ export function StemProgramClosing() {
       <section className="py-20 md:py-28">
         <Container>
           <div className="mx-auto max-w-5xl text-center">
-            <h2 className="font-display text-2xl font-semibold text-navy md:text-3xl">
+            <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl">
               Explore More
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-charcoal/80 md:text-lg">

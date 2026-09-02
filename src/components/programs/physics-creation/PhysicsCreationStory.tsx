@@ -6,14 +6,14 @@ export function PhysicsCreationStory() {
   return (
     <section className="bg-white/60 py-20 md:py-28">
       <Container>
-        <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl lg:text-5xl">
+        <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl">
           Why Physics &amp; Creation?
         </h2>
 
         <div className="mx-auto mt-10 grid max-w-4xl items-start gap-8 md:mt-12 md:grid-cols-[minmax(0,13rem)_minmax(0,1fr)] md:gap-10 lg:max-w-5xl lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] lg:gap-12">
           <PhysicsCreationLightbulbImage />
 
-          <div className="min-w-0 space-y-6 text-lg leading-relaxed text-charcoal/85 md:text-xl">
+          <div className="min-w-0 space-y-6 text-base leading-relaxed text-charcoal/85 md:text-lg">
             <p>
               One of my favorite topics is the creation of the universe. I am an
               engineer and a Christian. I have been studying physics, creation,

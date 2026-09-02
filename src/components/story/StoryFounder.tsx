@@ -23,16 +23,17 @@ export function StoryFounder() {
             </div>
           </div>
 
-          <div className="space-y-4 text-xs leading-relaxed text-charcoal/85 sm:space-y-5 sm:text-sm md:text-base lg:text-lg">
+          <div className="space-y-4 text-base leading-relaxed text-charcoal/85 sm:space-y-5 md:text-lg">
             <p>
-              {SITE.founder} has loved learning since he was a kid. His mom would
-              bring small machines home from work, and he became fascinated with
-              taking them apart, discovering how they worked from the inside, and
-              sometimes even figuring out how to fix them! That love of learning
-              fueled him to study and graduate with a degree in Mechanical
-              Engineering. Later he felt called to become a missionary and moved
-              to Japan. He lived in Japan for almost four decades, where he and
-              his family launched KidsWow.
+              {SITE.founder} has loved learning since he was a kid. His mom worked
+              at a machine shop when he was little, and she would bring home
+              machines that didn&apos;t work any more and let Warren take them
+              apart. He became fascinated with discovering how each one worked
+              inside, and sometimes he even figured out how to fix them! That
+              love of learning fueled him to study and graduate with a degree in
+              Mechanical Engineering. Later he felt called to become a missionary
+              and moved to Japan. He lived in Japan for almost four decades,
+              where he and his family launched KidsWow.
             </p>
             <p>
               When he returned to the United States in 2021, Warren was

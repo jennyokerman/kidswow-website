@@ -8,7 +8,7 @@ export function Method() {
   return (
     <section id="method" className="py-20 md:py-28">
       <Container>
-        <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl lg:text-5xl">
+        <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl">
           The KidsWow Method
         </h2>
 

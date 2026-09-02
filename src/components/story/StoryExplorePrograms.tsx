@@ -29,10 +29,10 @@ export function StoryExplorePrograms() {
     <section className="bg-sage/10 py-20 md:py-28">
       <Container>
         <div className="mx-auto max-w-5xl text-center xl:max-w-6xl">
-          <h2 className="text-balance font-display text-3xl font-semibold leading-tight text-navy md:text-4xl lg:text-[2.65rem] lg:leading-snug xl:text-5xl">
+          <h2 className="text-balance text-center font-display text-3xl font-semibold leading-tight text-navy md:text-4xl">
             Ready to Explore More?
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-charcoal/80">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-charcoal/80 md:text-lg">
             Discover how KidsWow can inspire learning in your community.
           </p>
         </div>

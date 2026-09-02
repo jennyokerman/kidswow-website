@@ -72,10 +72,10 @@ export function MethodNutshell() {
             <Fragment key={step.title}>
               {index > 0 ? <FlowArrow /> : null}
               <article className="min-w-0 flex-1 rounded-2xl bg-cream p-5 ring-1 ring-sage/25 md:p-6">
-                <h3 className="font-display text-lg font-semibold text-navy md:text-xl">
+                <h3 className="font-display text-xl font-bold text-navy md:text-2xl">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-charcoal/85 md:mt-3 md:text-base">
+                <p className="mt-2 text-base leading-relaxed text-charcoal/85 md:mt-3 md:text-lg">
                   {step.body}
                 </p>
               </article>

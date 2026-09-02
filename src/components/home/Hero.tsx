@@ -17,7 +17,7 @@ export function Hero() {
             <p className="font-display text-xl font-semibold leading-snug text-navy min-[481px]:text-2xl lg:text-4xl lg:leading-snug">
               {MISSION}
             </p>
-            <p className="text-base leading-relaxed text-charcoal/85 min-[481px]:text-lg lg:text-xl">
+            <p className="text-base leading-relaxed text-charcoal/85 min-[481px]:text-lg">
               {BODY}
             </p>
           </div>

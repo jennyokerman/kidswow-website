@@ -9,7 +9,7 @@ export function KidsWowStories() {
   return (
     <section id="kidswow-stories" className="py-20 md:py-28">
       <Container>
-        <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl lg:text-5xl">
+        <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl">
           KidsWow Inspiration
         </h2>
 

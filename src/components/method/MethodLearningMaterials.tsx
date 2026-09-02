@@ -29,7 +29,7 @@ export function MethodLearningMaterials() {
           </ul>
         </div>
 
-        <div className="mx-auto mt-10 max-w-3xl space-y-6 text-center text-lg leading-relaxed text-charcoal/85 md:mt-12 md:text-xl">
+        <div className="mx-auto mt-10 max-w-3xl space-y-6 text-center text-base leading-relaxed text-charcoal/85 md:mt-12 md:text-lg">
           <p>
             It all starts with &ldquo;show and tell&rdquo;. Then the magic
             happens.

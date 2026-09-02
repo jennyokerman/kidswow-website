@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/Container";
+import { YouTubeFacade } from "@/components/ui/YouTubeFacade";
 
 const YOUTUBE_ID = "r7LsjMqr-S0";
 
@@ -13,13 +14,10 @@ export function PhysicsCreationHero() {
           The &ldquo;Let There Be Light&rdquo; Experience
         </p>
 
-        <div className="mx-auto mt-10 aspect-video max-w-4xl overflow-hidden rounded-2xl bg-navy ring-1 ring-sage/25 md:mt-12">
-          <iframe
-            className="h-full w-full"
-            src={`https://www.youtube.com/embed/${YOUTUBE_ID}`}
+        <div className="mx-auto mt-10 max-w-4xl md:mt-12">
+          <YouTubeFacade
+            videoId={YOUTUBE_ID}
             title="Physics & Creation — Let There Be Light"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
           />
         </div>
       </Container>

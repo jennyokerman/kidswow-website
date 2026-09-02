@@ -12,7 +12,7 @@ const TIMELINE = [
   },
   {
     year: "Today",
-    label: "Hands-on STEM, physics, and foundational finance skills",
+    label: "Hands-on STEM, physics, and foundational finance program for you!",
   },
 ] as const;
 

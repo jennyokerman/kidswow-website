@@ -6,7 +6,7 @@ export function MethodWhyWow() {
     <section className="bg-white/60 py-20 md:py-28">
       <Container>
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-3xl font-semibold text-navy md:text-4xl">
+          <h2 className="text-center font-display text-3xl font-semibold text-navy md:text-4xl">
             Why Wow?
           </h2>
           <div className="mt-6 space-y-5 text-base leading-relaxed text-charcoal/85 md:text-lg">
