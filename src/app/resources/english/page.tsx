@@ -1,5 +1,33 @@
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import type { Metadata } from "next";
+import { EnglishBackground } from "@/components/resources/english/EnglishBackground";
+import { EnglishHero } from "@/components/resources/english/EnglishHero";
+import { EnglishLegacy } from "@/components/resources/english/EnglishLegacy";
+import { EnglishWorksheets } from "@/components/resources/english/EnglishWorksheets";
+import { SITE } from "@/lib/site";
+
+const title = "KidsWow English";
+const description =
+  "The legacy of KidsWow EnglishPro in Japan—and where to find ESL Launch and original YouTube video resources today.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  openGraph: {
+    title: `${title} | ${SITE.name}`,
+    description,
+    url: `${SITE.url}/resources/english`,
+    siteName: SITE.name,
+    type: "website",
+  },
+};
 
 export default function EnglishPage() {
-  return <PlaceholderPage title="KidsWow English" />;
+  return (
+    <>
+      <EnglishHero />
+      <EnglishBackground />
+      <EnglishLegacy />
+      <EnglishWorksheets />
+    </>
+  );
 }
