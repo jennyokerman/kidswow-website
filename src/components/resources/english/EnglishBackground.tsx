@@ -39,16 +39,16 @@ export function EnglishBackground() {
               KidsWow English was developed to meet the need of a community.
               When Warren Okerman and his wife moved to Japan, they met hundreds
               of Japanese people who wanted to learn English as a second
-              language. Over the years the entire Okerman family worked together
-              to develop the KidsWow English curriculum, flashcards, games,
-              video content, and website.
+              language. The entire Okerman family worked together to develop the
+              KidsWow English curriculum, flashcards, games, video content, and
+              website.
             </p>
             <p>
               The result was the first of many innovative KidsWow programs:
-              KidsWow EnglishPro. KidsWow English embodies the joy, creativity,
-              and consistency of the KidsWow Method. As a result of the program,
-              hundreds of families discovered that they too could learn English
-              &ldquo;The Natural Way.&rdquo;
+              KidsWow EnglishPro. KidsWow EnglishPro embodies the joy,
+              creativity, and consistency of the KidsWow Method. As a result of
+              the program, hundreds of families discovered that they too could
+              learn English &ldquo;The Natural Way.&rdquo;
             </p>
             <p>
               KidsWow EnglishPro is a very important part of the KidsWow story.

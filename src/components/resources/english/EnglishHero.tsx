@@ -21,9 +21,9 @@ export function EnglishHero() {
   return (
     <section className="bg-sky/10 py-16 md:py-24 lg:py-28">
       <Container>
-        <div className="grid grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] items-center gap-6 max-[480px]:grid-cols-1 max-[480px]:gap-8 lg:gap-14">
-          <div className="flex min-w-0 flex-col gap-4 text-left max-[480px]:mx-auto max-[480px]:max-w-xl max-[480px]:text-center sm:gap-5">
-            <h1 className="whitespace-nowrap font-display text-4xl font-semibold leading-tight text-navy md:text-5xl">
+        <div className="grid grid-cols-1 items-center gap-8 min-[481px]:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] min-[481px]:gap-6 lg:gap-14">
+          <div className="order-2 flex min-w-0 flex-col gap-4 text-left sm:gap-5 min-[481px]:order-1">
+            <h1 className="font-display text-4xl font-semibold leading-tight text-navy md:text-5xl">
               KidsWow English
             </h1>
             <p className="text-base leading-relaxed text-charcoal/85 min-[481px]:text-lg">
@@ -31,7 +31,7 @@ export function EnglishHero() {
               program did just that. In 2005, KidsWow EnglishPro was launched to
               teach English as a second language.
             </p>
-            <div className="mt-1 flex max-[480px]:justify-center">
+            <div className="mt-1 flex justify-start">
               <a
                 href={YOUTUBE_URL}
                 target="_blank"
@@ -46,14 +46,14 @@ export function EnglishHero() {
             </div>
           </div>
 
-          <div className="min-w-0 max-[480px]:mx-auto max-[480px]:max-w-sm">
+          <div className="order-1 min-w-0 w-full min-[481px]:order-2">
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-sage/10 ring-1 ring-sage/25">
               <Image
                 src={englishHero}
                 alt="Kids learning English with KidsWow"
                 fill
                 className="object-cover object-center"
-                sizes="(max-width: 768px) 416px, 50vw"
+                sizes="(max-width: 480px) 100vw, (max-width: 768px) 416px, 50vw"
                 priority
               />
             </div>

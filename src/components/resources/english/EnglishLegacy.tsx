@@ -45,7 +45,7 @@ export function EnglishLegacy() {
           </h2>
           <div className="mt-8 space-y-4 text-base leading-relaxed text-charcoal/85 md:text-lg">
             <p>
-              Over the years KidsWow has changed to adapt and expand to fit the
+              Over the years, KidsWow has changed to adapt and expand to fit the
               needs of young people. Although KidsWow EnglishPro is not currently
               an active program, the time-tested KidsWow curriculum is still
               relevant.
@@ -53,9 +53,9 @@ export function EnglishLegacy() {
             <p>
               Kim Okerman, Warren&apos;s daughter, had the vision to update and
               reimagine the KidsWow English program into a cohesive resource to
-              equip educators. The result is ESL Launch—a place for teachers to
-              access the three-part ESL Launch curriculum, kids books, and more.
+              equip educators.
             </p>
+            <p>The result is ESL Launch.</p>
           </div>
 
           <p className="mx-auto mt-10 max-w-2xl text-center font-display text-lg font-semibold leading-snug text-sky md:mt-12 md:text-xl">

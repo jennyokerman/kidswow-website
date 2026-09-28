@@ -23,8 +23,8 @@ export default function HomePage() {
       <Method />
       <Benefits />
       <KidsWowStories />
-      <CtaBand />
       <WhoWeAre />
+      <CtaBand />
     </>
   );
 }

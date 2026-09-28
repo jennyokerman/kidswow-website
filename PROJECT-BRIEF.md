@@ -61,7 +61,7 @@ Original build spec from the initial project conversation. Use this as the north
 | Finance Foundations  | `/programs/finance`          |
 | KidsWow Method       | `/about/method`              |
 | The KidsWow Story    | `/about/story`               |
-| KidsWow English      | `/resources/english`         |
+| KidsWow English      | `/english`                   |
 | Contact              | `/contact`                   |
 
 ---
@@ -97,8 +97,8 @@ Original build spec from the initial project conversation. Use this as the north
 3. KidsWow Method  
 4. Benefits  
 5. Success Stories  
-6. CTA  
-7. Who We Are  
+6. Who We Are  
+7. CTA  
 8. Footer (site-wide, not a scroll “story” block)
 
 ---

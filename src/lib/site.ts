@@ -16,5 +16,5 @@ export const NAV_LINKS = {
     { label: "KidsWow Method", href: "/about/method" },
     { label: "The KidsWow Story", href: "/about/story" },
   ],
-  resources: [{ label: "KidsWow English", href: "/resources/english" }],
+  resources: [{ label: "KidsWow English", href: "/english" }],
 } as const;
